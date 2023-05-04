@@ -20,6 +20,9 @@ module.exports = {
         "font-primary-200": "#EBEBEB",
         "font-primary-100": "#F5F5F5",
       },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
     },
   },
   plugins: [],

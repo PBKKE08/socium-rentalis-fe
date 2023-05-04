@@ -1,11 +1,14 @@
 import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
 import LogoIcon from "@/components/atoms/LogoIcon";
+import Link from "next/link";
 
 export default function Register() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-8 py-16">
-      <LogoIcon isBig />
+      <Link href="/">
+        <LogoIcon isBig />
+      </Link>
 
       <h1 className="text-heading text-4xl font-semibold">Register</h1>
       <p className="text-base text-font-primary-400 mt-3">
@@ -63,8 +66,10 @@ export default function Register() {
             required
           />
         </div>
-        <Button isPrimary type="submit" text="Register" className="mb-3" />
-        <Button type="submit" text="Login" />
+        <Button isPrimary type="submit" className="mb-3">
+          Register
+        </Button>
+        <Button href="/login">Login</Button>
       </form>
     </div>
   );
