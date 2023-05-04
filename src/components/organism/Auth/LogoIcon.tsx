@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function LogoIcon() {
   return (
-    <div className="flex justify-center items-center mb-8">
+    <div className="flex justify-center items-center mb-6">
       <Image
         src="/images/logo.svg"
         width={100}

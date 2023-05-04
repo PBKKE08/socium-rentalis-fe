@@ -3,7 +3,7 @@ import LogoIcon from "@/components/organism/Auth/LogoIcon";
 
 export default function Login() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center min-h-screen px-8 py-16">
       <LogoIcon />
 
       <h1 className="text-heading text-4xl font-semibold">Login</h1>

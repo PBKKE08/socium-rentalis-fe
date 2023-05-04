@@ -1,18 +1,31 @@
-export default function Input() {
+import Label from "./Label";
+
+interface InputProps {
+  type: string;
+  id: string;
+  placeholder?: string;
+  required?: boolean;
+  isLabel?: boolean;
+  labelName?: string;
+}
+
+export default function Input({
+  type,
+  id,
+  placeholder,
+  required = false,
+  isLabel,
+  labelName,
+}: InputProps) {
   return (
     <>
-      <label
-        htmlFor="emailOrUsername"
-        className="block mb-4 font-medium text-heading"
-      >
-        Email or Username
-      </label>
+      {isLabel && <Label htmlFor={id} labelName={labelName} />}
       <input
-        type="text"
-        id="emailOrUsername"
-        className="border border-font-primary-300 text-heading rounded-full focus:ring-primary-200 focus:border-primary-200 block w-full px-4 py-3 text-base"
-        placeholder="Enter your email or username"
-        required
+        type={type}
+        id={id}
+        className="border border-font-primary-300 text-heading rounded-full focus:ring-primary-200 focus:border-primary-200 block w-full px-4 py-3 text-base transition duration-300 outline-none"
+        placeholder={placeholder}
+        required={required}
       />
     </>
   );
