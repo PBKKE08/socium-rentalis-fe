@@ -23,7 +23,7 @@ export default function Input({
       <input
         type={type}
         id={id}
-        className="border border-font-primary-300 text-heading rounded-full focus:ring-primary-200 focus:border-primary-200 block w-full px-4 py-3 text-base transition duration-300 outline-none"
+        className="border border-font-primary-300 text-heading rounded-full focus:ring-primary-200 focus:border-primary-200 block w-full px-4 py-3 text-base transition duration-500 outline-none"
         placeholder={placeholder}
         required={required}
       />
