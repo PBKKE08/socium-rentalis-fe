@@ -15,7 +15,7 @@ export default function Login() {
         Login before you place an order partner.
       </p>
 
-      <form className="w-96 mt-8">
+      <form className="w-full md:w-96 mt-8">
         <div className="mb-6">
           <Input
             id="emailOrUsername"

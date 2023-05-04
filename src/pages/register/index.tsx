@@ -15,7 +15,7 @@ export default function Register() {
         Register if you don't have an account yet.
       </p>
 
-      <form className="w-96 mt-8">
+      <form className="w-full md:w-96 mt-8">
         <div className="mb-6">
           <Input
             id="name"
