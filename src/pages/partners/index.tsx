@@ -1,7 +1,7 @@
 import Navbar from "@/components/organism/Navbar";
 import Head from "next/head";
 
-export default function Partners() {
+export default function Home() {
   return (
     <>
       <Head>
@@ -11,7 +11,7 @@ export default function Partners() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        <Navbar name="home" />
+        <Navbar name="partners" />
       </main>
     </>
   );
