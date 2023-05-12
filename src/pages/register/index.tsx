@@ -1,6 +1,7 @@
 import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
 import LogoIcon from "@/components/atoms/LogoIcon";
+import Select from "@/components/atoms/Select";
 import ImageInput from "@/components/organism/ImageInput";
 import Link from "next/link";
 
@@ -69,6 +70,9 @@ export default function Register() {
             placeholder="Enter your password"
             required
           />
+        </div>
+        <div className="mb-8">
+          <Select isLabel={true} required labelName="Gender" />
         </div>
         <Button isPrimary type="submit" className="mb-3">
           Register
