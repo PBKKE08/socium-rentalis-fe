@@ -1,6 +1,7 @@
 import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
 import LogoIcon from "@/components/atoms/LogoIcon";
+import ImageInput from "@/components/organism/ImageInput";
 import Link from "next/link";
 
 export default function Register() {
@@ -16,6 +17,9 @@ export default function Register() {
       </p>
 
       <form className="w-full md:w-96 mt-8">
+        <div className="mb-6 flex flex-col items-center justify-center">
+          <ImageInput />
+        </div>
         <div className="mb-6">
           <Input
             id="name"
