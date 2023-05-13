@@ -6,7 +6,7 @@ type HeroProps = {
 
 export default function Hero({ className }: HeroProps) {
   return (
-    <div className={`${className} container mx-auto`}>
+    <div className={`${className}`}>
       <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-7">
         <HeroContent />
         <Image

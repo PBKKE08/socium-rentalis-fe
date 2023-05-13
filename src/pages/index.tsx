@@ -1,5 +1,6 @@
 import Hero from "@/components/organism/Hero";
 import Navbar from "@/components/organism/Navbar";
+import Step from "@/components/organism/Step";
 import Head from "next/head";
 
 export default function Partners() {
@@ -13,7 +14,8 @@ export default function Partners() {
       </Head>
       <main>
         <Navbar name="home" />
-        <Hero className="py-20 px-4" />
+        <Hero className="pt-20 pb-8 px-4 container mx-auto" />
+        <Step className="pt-20 pb-8 px-4 container mx-auto" />
       </main>
     </>
   );
