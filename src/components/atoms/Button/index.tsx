@@ -13,6 +13,7 @@ export default function Button({
   children,
   className,
   href,
+  ...props
 }: ButtonProps) {
   const buttonClass = clsx(
     "rounded-full w-full block px-5 py-3 text-center transition duration-300 focus:ring-4 focus:outline-none",
@@ -30,7 +31,7 @@ export default function Button({
     );
 
   return (
-    <button {...(type && { type })} className={buttonClass}>
+    <button {...(type && { type })} className={buttonClass} {...props}>
       {children}
     </button>
   );
