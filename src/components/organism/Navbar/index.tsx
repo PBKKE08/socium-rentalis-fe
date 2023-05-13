@@ -23,8 +23,6 @@ export default function Navbar({ name }: NavbarProps) {
       ul.classList.toggle("border-b");
       ul.classList.toggle("border-b-primary-100");
       ul.classList.toggle("opacity-0");
-      // ul.classList.toggle("md:opacity-100");
-      // ul.classList.toggle("md:top-0");
       ul.classList.toggle("z-[-1]");
       ul.classList.toggle("top-[80px]");
 

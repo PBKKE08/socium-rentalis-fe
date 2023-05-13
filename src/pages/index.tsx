@@ -1,3 +1,4 @@
+import Hero from "@/components/organism/Hero";
 import Navbar from "@/components/organism/Navbar";
 import Head from "next/head";
 
@@ -12,6 +13,7 @@ export default function Partners() {
       </Head>
       <main>
         <Navbar name="home" />
+        <Hero className="py-20 px-4" />
       </main>
     </>
   );

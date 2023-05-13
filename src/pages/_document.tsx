@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body className="font-poppins">
+      <body className="font-poppins antialiased">
         <Main />
         <NextScript />
       </body>
