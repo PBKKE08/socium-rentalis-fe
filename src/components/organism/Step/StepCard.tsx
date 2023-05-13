@@ -18,7 +18,7 @@ export default function StepCard({
         width={300}
         height={200}
         alt={`step-${number}`}
-        className="object-cover"
+        className="object-cover object-center w-full"
       />
       <div className="flex gap-4 items-start justify-start">
         <span className="flex items-center justify-center w-8 h-8 p-2 rounded-full border border-primary-200 text-primary-200 text-center mx-auto">

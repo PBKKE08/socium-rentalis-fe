@@ -15,6 +15,7 @@ module.exports = {
         "primary-400": "#870041",
         "primary-500": "#531F38",
         heading: "#20000F",
+        "font-primary-500": "#707070",
         "font-primary-400": "#999CA0",
         "font-primary-300": "#D9D9D9",
         "font-primary-200": "#EBEBEB",
