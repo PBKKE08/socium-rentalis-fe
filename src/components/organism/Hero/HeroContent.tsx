@@ -19,7 +19,7 @@ const features = [
 export default function HeroContent() {
   return (
     <div className="flex flex-col gap-8">
-      <h1 className="text-heading text-3xl md:text-5xl font-bold leading-[3rem] md:leading-[4rem] text-center md:text-start">
+      <h1 className="text-heading text-3xl md:text-5xl font-bold leading-[3rem] md:leading-[4rem] text-center lg:text-start">
         Meet Your Partner. <br /> Trusted & Professional.
       </h1>
       <div className="flex justify-between items-start flex-col md:flex-row md:items-center gap-3 md:gap-1">
@@ -31,7 +31,7 @@ export default function HeroContent() {
           />
         ))}
       </div>
-      <Button isPrimary href="#step" className="md:max-w-fit">
+      <Button isPrimary href="#step" className="lg:max-w-fit">
         Get Started
       </Button>
     </div>
