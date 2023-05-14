@@ -1,5 +1,6 @@
 import BestPartners from "@/components/organism/BestPartners";
 import Categories from "@/components/organism/Categories";
+import Footer from "@/components/organism/Footer";
 import Hero from "@/components/organism/Hero";
 import Navbar from "@/components/organism/Navbar";
 import Step from "@/components/organism/Step";
@@ -21,7 +22,10 @@ export default function Partners() {
         <div className="bg-font-primary-100">
           <Categories className="pt-20 pb-20 px-4 container mx-auto" />
         </div>
-        <BestPartners className="pt-20 pb-8 px-4 container mx-auto" />
+        <BestPartners className="pt-20 pb-8 px-4 container mx-auto mb-20" />
+        <div className="bg-primary-400">
+          <Footer className="pt-20 pb-20 px-4 container mx-auto" />
+        </div>
       </main>
     </>
   );
