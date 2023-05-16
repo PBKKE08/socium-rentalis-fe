@@ -38,7 +38,7 @@ export default function FilterForm({ className }: FilterFormProps) {
           value={selectGender}
           onChange={(e) => setSelectGender(e.target.value)}
         >
-          <option defaultValue="all">Select Gender</option>
+          <option value="all">Select Gender</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
         </Select>
@@ -47,7 +47,7 @@ export default function FilterForm({ className }: FilterFormProps) {
           value={selectCategory}
           onChange={(e) => setSelectCategory(e.target.value)}
         >
-          <option defaultValue="all">Select Category</option>
+          <option value="all">Select Category</option>
           <option value="cars">Cars</option>
           <option value="bike">Bike</option>
         </Select>

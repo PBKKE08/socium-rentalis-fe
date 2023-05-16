@@ -13,9 +13,9 @@ export default function PartnerCard({
   return (
     <div className="w-72 flex flex-col gap-6 items-center justify-center">
       <Image
-        src={`https://source.unsplash.com/random/250x300/?${gender}`}
-        width={250}
-        height={300}
+        src={`https://source.unsplash.com/random/?${gender}`}
+        width={100}
+        height={200}
         alt="partner-img"
         className="object-cover object-center rounded-xl shadow-md w-full"
         priority

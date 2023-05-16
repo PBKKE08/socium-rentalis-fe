@@ -1,5 +1,6 @@
 import FilterForm from "@/components/organism/FilterForm";
 import Navbar from "@/components/organism/Navbar";
+import PartnersList from "@/components/organism/PartnersList";
 import Head from "next/head";
 
 export default function Partners() {
@@ -14,6 +15,7 @@ export default function Partners() {
       <main>
         <Navbar name="partners" />
         <FilterForm className="pt-10 pb-8 px-4 container mx-auto" />
+        <PartnersList className="pt-10 pb-8 px-4 container mx-auto" />
       </main>
     </>
   );
