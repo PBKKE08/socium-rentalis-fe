@@ -56,6 +56,11 @@ export default function FilterForm({ className }: FilterFormProps) {
           Apply Filters
         </Button>
       </form>
+      <p className="text-heading mt-8">
+        Show search by {inputValue ? `name: ${inputValue}` : ""}{" "}
+        {selectGender !== "all" ? `gender: ${selectGender}` : ""}{" "}
+        {selectCategory !== "all" ? `category: ${selectCategory}` : ""}
+      </p>
     </div>
   );
 }
