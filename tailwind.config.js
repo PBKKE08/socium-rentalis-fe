@@ -20,6 +20,7 @@ module.exports = {
         "font-primary-300": "#D9D9D9",
         "font-primary-200": "#EBEBEB",
         "font-primary-100": "#F5F5F5",
+        "font-primary-50": "#F9F9F9",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

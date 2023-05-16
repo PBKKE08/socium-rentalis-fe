@@ -1,7 +1,8 @@
+import FilterForm from "@/components/organism/FilterForm";
 import Navbar from "@/components/organism/Navbar";
 import Head from "next/head";
 
-export default function Home() {
+export default function Partners() {
   return (
     <>
       <Head>
@@ -12,6 +13,7 @@ export default function Home() {
       </Head>
       <main>
         <Navbar name="partners" />
+        <FilterForm className="pt-10 pb-8 px-4 container mx-auto" />
       </main>
     </>
   );

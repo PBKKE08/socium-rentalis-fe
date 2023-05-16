@@ -11,6 +11,7 @@ export default function Select({
   labelName,
   id = "",
   name,
+  children,
   ...props
 }: SelectProps) {
   return (
@@ -26,11 +27,7 @@ export default function Select({
         aria-label={name}
         {...props}
       >
-        <option value="" disabled selected>
-          Select your gender
-        </option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
+        {children}
       </select>
     </>
   );

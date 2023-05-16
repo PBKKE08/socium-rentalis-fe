@@ -72,7 +72,13 @@ export default function Register() {
           />
         </div>
         <div className="mb-8">
-          <Select isLabel={true} required labelName="Gender" />
+          <Select isLabel={true} required labelName="Gender">
+            <option defaultValue="" disabled>
+              Select your gender
+            </option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </Select>
         </div>
         <Button isPrimary type="submit" className="mb-3">
           Register

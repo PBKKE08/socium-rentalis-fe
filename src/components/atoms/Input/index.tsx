@@ -1,13 +1,14 @@
+import { InputHTMLAttributes, useState } from "react";
 import Label from "./Label";
 
 type InputProps = {
-  type: string;
+  type: InputHTMLAttributes<HTMLInputElement>["type"];
   id: string;
   placeholder?: string;
   required?: boolean;
   isLabel?: boolean;
   labelName?: string;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+} & InputHTMLAttributes<HTMLInputElement>;
 
 export default function Input({
   type,
@@ -17,6 +18,7 @@ export default function Input({
   isLabel,
   labelName,
   className = "",
+  ...props
 }: InputProps) {
   return (
     <>
@@ -27,6 +29,7 @@ export default function Input({
         className={`${className} border border-font-primary-300 text-heading rounded-full focus:ring-primary-200 focus:border-primary-200 block w-full px-4 py-3 text-base transition duration-500 outline-none`}
         placeholder={placeholder}
         required={required}
+        {...props}
       />
     </>
   );
