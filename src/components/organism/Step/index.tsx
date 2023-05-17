@@ -23,7 +23,7 @@ export default function Step({ className }: StepProps) {
   return (
     <div id="step" className={`${className}`}>
       <h1 className="section-heading mb-10">How to Book Our Partners</h1>
-      <div className="flex gap-4 md:flex-row flex-col justify-between items-center">
+      <div className="flex gap-4 flex-wrap justify-center items-center">
         {stepData.map((step, index) => (
           <StepCard
             key={step.title}

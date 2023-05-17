@@ -11,19 +11,19 @@ export default function PartnerCard({
   rating,
 }: PartnerCardProps) {
   return (
-    <div className="w-72 flex flex-col gap-6 items-center justify-center">
+    <div className="w-2/3 sm:w-1/2 md:w-2/5 lg:w-1/5 flex flex-col gap-6 items-center justify-center">
       <Image
         src={`https://source.unsplash.com/random/?${gender}`}
-        width={100}
-        height={200}
+        width={500}
+        height={500}
         alt="partner-img"
-        className="object-cover object-center rounded-xl shadow-md w-full"
-        priority
+        className="object-cover object-center rounded-xl shadow-md w-full aspect-square"
         quality={100}
+        loading="lazy"
       />
 
       <div className="flex flex-col gap-1 w-full">
-        <p className="text-heading text-xl font-semibold">
+        <p className="text-heading text-lg font-semibold">
           <NumericFormat
             value={price}
             displayType="text"
@@ -33,7 +33,7 @@ export default function PartnerCard({
             thousandSeparator="."
           />
         </p>
-        <p className="text-xl text-font-primary-500 font-medium">{name}</p>
+        <p className="text-lg text-font-primary-500 font-medium">{name}</p>
         <p className="text-font-primary-400">
           {gender} - {category}
         </p>

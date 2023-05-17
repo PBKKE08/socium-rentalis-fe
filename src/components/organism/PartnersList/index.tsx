@@ -7,7 +7,7 @@ type PartnersListProps = {
 export default function PartnersList({ className }: PartnersListProps) {
   return (
     <div className={className}>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center content-center grid-flow-dense">
+      <div className="flex flex-wrap gap-4 items-center justify-center">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((partner) => (
           <PartnerCard
             key={partner}

@@ -25,6 +25,9 @@ module.exports = {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
       },
+      aspectRatio: {
+        "2/3": "2/3",
+      },
     },
     screens: {
       sm: "576px",
