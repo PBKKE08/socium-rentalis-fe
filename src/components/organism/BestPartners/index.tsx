@@ -1,4 +1,4 @@
-import PartnerCard from "./PartnerCard";
+import PartnerCard from "../../atoms/PartnerCard";
 
 type BestPartnersProps = {
   className?: string;
@@ -6,6 +6,7 @@ type BestPartnersProps = {
 
 const partnersData: PartnerCard[] = [
   {
+    id: 1,
     name: "John Doe",
     category: "Cars",
     rating: 5,
@@ -13,6 +14,7 @@ const partnersData: PartnerCard[] = [
     gender: "female",
   },
   {
+    id: 2,
     name: "John Doe",
     category: "Cars",
     rating: 5,
@@ -20,6 +22,7 @@ const partnersData: PartnerCard[] = [
     gender: "male",
   },
   {
+    id: 3,
     name: "John Doe",
     category: "Cars",
     rating: 4.7,
@@ -27,6 +30,7 @@ const partnersData: PartnerCard[] = [
     gender: "female",
   },
   {
+    id: 4,
     name: "John Doe",
     category: "Cars",
     rating: 5,
@@ -42,14 +46,7 @@ export default function BestPartners({ className }: BestPartnersProps) {
       <p className="text-font-primary-400 mb-10">Always there when needed</p>
       <div className="flex justify-center items-center gap-8 md:gap-4 flex-col md:flex-row flex-wrap lg:flex-nowrap">
         {partnersData.map((partner, index) => (
-          <PartnerCard
-            category={partner.category}
-            gender={partner.gender}
-            name={partner.name}
-            price={partner.price}
-            rating={partner.rating}
-            key={index}
-          />
+          <PartnerCard partner={partner} key={index} />
         ))}
       </div>
     </div>

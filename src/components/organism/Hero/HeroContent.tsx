@@ -22,7 +22,7 @@ export default function HeroContent() {
       <h1 className="text-heading text-3xl md:text-5xl font-bold leading-[3rem] md:leading-[4rem] text-center lg:text-start">
         Meet Your Partner. <br /> Trusted & Professional.
       </h1>
-      <div className="flex justify-between items-start flex-col md:flex-row md:items-center gap-3 md:gap-1">
+      <div className="flex flex-col gap-3">
         {features.map((item) => (
           <Feature
             title={item.title}

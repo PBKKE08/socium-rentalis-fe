@@ -1,19 +1,19 @@
 import Image from "next/image";
+import Link from "next/link";
 import { NumericFormat } from "react-number-format";
 
-type PartnerCardProps = {} & PartnerCard;
+type PartnerCardProps = {
+  partner: PartnerCard;
+};
 
-export default function PartnerCard({
-  category,
-  gender,
-  name,
-  price,
-  rating,
-}: PartnerCardProps) {
+export default function PartnerCard({ partner }: PartnerCardProps) {
   return (
-    <div className="w-2/3 sm:w-1/2 md:w-2/5 lg:w-1/5 flex flex-col gap-6 items-center justify-center">
+    <Link
+      href={`/detail/${partner.id}`}
+      className="w-2/3 sm:w-1/2 md:w-2/5 lg:w-1/5 flex flex-col gap-6 items-center justify-center hover:scale-105 duration-300"
+    >
       <Image
-        src={`https://source.unsplash.com/random/?${gender}`}
+        src={`https://source.unsplash.com/random/?${partner.gender}`}
         width={500}
         height={500}
         alt="partner-img"
@@ -25,7 +25,7 @@ export default function PartnerCard({
       <div className="flex flex-col gap-1 w-full">
         <p className="text-heading text-lg font-semibold">
           <NumericFormat
-            value={price}
+            value={partner.price}
             displayType="text"
             prefix="IDR "
             suffix="/jam"
@@ -33,9 +33,11 @@ export default function PartnerCard({
             thousandSeparator="."
           />
         </p>
-        <p className="text-lg text-font-primary-500 font-medium">{name}</p>
+        <p className="text-lg text-font-primary-500 font-medium">
+          {partner.name}
+        </p>
         <p className="text-font-primary-400">
-          {gender} - {category}
+          {partner.gender} - {partner.category}
         </p>
         <div className="flex gap-1 items-center">
           <Image
@@ -44,7 +46,7 @@ export default function PartnerCard({
             height={20}
             alt="star"
           />
-          <p className="text-headiong">{rating}</p>
+          <p className="text-headiong">{partner.rating}</p>
           {/* {Array.from(Array(rating).keys()).map((_, index) => (
             <Image
               src="/images/icon-star.svg"
@@ -66,6 +68,6 @@ export default function PartnerCard({
           ))} */}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

@@ -1,22 +1,50 @@
-import PartnerCard from "../BestPartners/PartnerCard";
+import PartnerCard from "../../atoms/PartnerCard";
 
 type PartnersListProps = {
   className?: string;
 };
 
+const partnersData: PartnerCard[] = [
+  {
+    id: 1,
+    name: "John Doe",
+    category: "Cars",
+    rating: 5,
+    price: 100000,
+    gender: "female",
+  },
+  {
+    id: 2,
+    name: "John Doe",
+    category: "Cars",
+    rating: 5,
+    price: 100000,
+    gender: "male",
+  },
+  {
+    id: 3,
+    name: "John Doe",
+    category: "Cars",
+    rating: 4.7,
+    price: 100000,
+    gender: "female",
+  },
+  {
+    id: 4,
+    name: "John Doe",
+    category: "Cars",
+    rating: 5,
+    price: 100000,
+    gender: "male",
+  },
+];
+
 export default function PartnersList({ className }: PartnersListProps) {
   return (
     <div className={className}>
       <div className="flex flex-wrap gap-4 items-center justify-center">
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((partner) => (
-          <PartnerCard
-            key={partner}
-            category="cars"
-            gender="male"
-            name="Andre"
-            price={100000}
-            rating={4.54}
-          />
+        {partnersData.map((partner) => (
+          <PartnerCard partner={partner} key={partner.id} />
         ))}
       </div>
     </div>

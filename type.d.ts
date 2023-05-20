@@ -5,6 +5,6 @@ type PartnerCard = {
   rating: number;
   gender: "male" | "female";
   description?: string;
-  id?: string;
+  id?: string | number;
   image?: string;
 };
