@@ -5,13 +5,13 @@ import BookingItemDetail from "./BookingItemDetail";
 export default function BookingItemProfile() {
   return (
     <>
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-4 w-full mb-10">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4 w-full mb-10">
         <Image
           src={`https://source.unsplash.com/random/?male`}
           width={500}
           height={500}
           alt="partner-img"
-          className="object-cover object-center rounded-xl shadow-md w-1/4 aspect-square"
+          className="object-cover object-center rounded-xl shadow-md w-2/4 md:w-2/6 lg:w-1/4 aspect-square"
           quality={100}
           loading="lazy"
         />

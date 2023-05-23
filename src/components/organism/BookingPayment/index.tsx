@@ -9,7 +9,7 @@ type BookingPaymentProps = {
 export default function BookingPayment({ className }: BookingPaymentProps) {
   return (
     <div className={`flex flex-col lg:flex-row ${className}`}>
-      <div className="border-r border-primary-100 pr-8 mr-8 w-3/5">
+      <div className="lg:border-r lg:border-primary-100 lg:pr-8 lg:mr-8 lg:w-3/5">
         <h1 className="section-heading mb-12">Booking Information</h1>
         <BookingItemProfile />
         <h1 className="section-heading mb-12">Payment Details</h1>
@@ -20,7 +20,7 @@ export default function BookingPayment({ className }: BookingPaymentProps) {
           <BookingItemNominal title="Total Biaya" value={1320000} />
         </div>
       </div>
-      <div className="w-2/5">
+      <div className="lg:w-2/5">
         <h1 className="section-heading mb-12">Pay With</h1>
         <BookingPaymentForm />
       </div>
