@@ -46,7 +46,7 @@ export default function PartnerCard({ partner }: PartnerCardProps) {
             height={20}
             alt="star"
           />
-          <p className="text-headiong">{partner.rating}</p>
+          <p className="text-heading">{partner.rating}</p>
           {/* {Array.from(Array(rating).keys()).map((_, index) => (
             <Image
               src="/images/icon-star.svg"

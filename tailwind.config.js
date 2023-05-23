@@ -5,6 +5,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/flowbite-react/**/*.js",
   ],
   theme: {
     extend: {
@@ -27,6 +28,7 @@ module.exports = {
       },
       aspectRatio: {
         "2/3": "2/3",
+        "9/16": "9/16",
       },
     },
     screens: {
@@ -38,5 +40,4 @@ module.exports = {
       "3xl": "1536px",
     },
   },
-  plugins: [],
 };

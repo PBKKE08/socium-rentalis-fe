@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Navbar from "../../components/organism/Navbar";
 import PartnerDetail from "@/components/organism/PartnerDetail";
-
+import Footer from "@/components/organism/Footer";
 export default function PartnerId() {
   return (
     <>
@@ -14,6 +14,9 @@ export default function PartnerId() {
       <main>
         <Navbar name="partners" />
         <PartnerDetail className="pt-20 pb-8 px-4 container mx-auto" />
+        <div className="bg-primary-400">
+          <Footer className="mt-20 pt-20 pb-20 px-4 container mx-auto" />
+        </div>
       </main>
     </>
   );
