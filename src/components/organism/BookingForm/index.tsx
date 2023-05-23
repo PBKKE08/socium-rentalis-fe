@@ -1,6 +1,6 @@
 import Input from "@/components/atoms/Input";
 import { useState } from "react";
-import TextareaForm from "./TextAreaForm";
+import TextareaForm from "./TextareaForm";
 import Button from "@/components/atoms/Button";
 
 type BookingFormProps = {
