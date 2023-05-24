@@ -1,4 +1,4 @@
-import MaintenanceCard from "./card";
+import UserCard from "./card";
 import PartnerCard from "../../atoms/PartnerCard";
 
 type PartnersListProps = {
@@ -40,12 +40,12 @@ const partnersData: PartnerCard[] = [
   },
 ];
 
-export default function MaintenanceList({ className }: PartnersListProps) {
+export default function UserList({ className }: PartnersListProps) {
   return (
     <div className={className}>
       <div className="grid items-center justify-center gap-6">
         {partnersData.map((partner) => (
-          <MaintenanceCard partner={partner} key={partner.id} />
+          <UserCard partner={partner} key={partner.id} />
         ))}
       </div>
     </div>

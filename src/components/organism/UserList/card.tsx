@@ -7,7 +7,7 @@ type PartnerCardProps = {
   partner: PartnerCard;
 };
 
-export default function MaintenanceCard({ partner }: PartnerCardProps) {
+export default function UserCard({ partner }: PartnerCardProps) {
   return (
     <Link
       href={`/detail/${partner.id}`}
@@ -24,16 +24,6 @@ export default function MaintenanceCard({ partner }: PartnerCardProps) {
       />
 
       <div className="flex flex-col gap-1 w-full mr-24">
-        <p className="text-heading text-lg font-semibold">
-          <NumericFormat
-            value={partner.price}
-            displayType="text"
-            prefix="IDR "
-            suffix="/jam"
-            decimalSeparator=","
-            thousandSeparator="."
-          />
-        </p>
         <p className="text-lg text-font-primary-500 font-medium">
           {partner.name}
         </p>
@@ -43,8 +33,7 @@ export default function MaintenanceCard({ partner }: PartnerCardProps) {
       </div>
 
       <div className="flex flex-col gap-2">
-        <Button isPrimary type="button">Approve</Button>
-        <Button type="button">Decline</Button>
+        <Button type="button">Deactivate</Button>
       </div>
     </Link>
   );

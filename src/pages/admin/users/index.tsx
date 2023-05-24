@@ -1,5 +1,11 @@
-import Head from "next/head";
+import BestPartners from "@/components/organism/BestPartners";
+import Categories from "@/components/organism/Categories";
+import Footer from "@/components/organism/Footer";
+import Hero from "@/components/organism/Hero";
 import Navbar from "@/components/organism/Navbar";
+import UserList from "@/components/organism/UserList";
+import Step from "@/components/organism/Step";
+import Head from "next/head";
 
 export default function Users() {
   return (
@@ -12,6 +18,7 @@ export default function Users() {
       </Head>
       <main>
         <Navbar name="partners" />
+        <UserList></UserList>
       </main>
     </>
   );

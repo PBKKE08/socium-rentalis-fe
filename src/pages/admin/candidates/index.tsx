@@ -3,7 +3,7 @@ import Categories from "@/components/organism/Categories";
 import Footer from "@/components/organism/Footer";
 import Hero from "@/components/organism/Hero";
 import Navbar from "@/components/organism/Navbar";
-import MaintenanceList from "@/components/organism/MaintenanceList";
+import CandidateList from "@/components/organism/CandidateList";
 import Step from "@/components/organism/Step";
 import Head from "next/head";
 
@@ -18,7 +18,7 @@ export default function Candidates() {
       </Head>
       <main>
         <Navbar name="partners" />
-        <MaintenanceList></MaintenanceList>
+        <CandidateList></CandidateList>
       </main>
     </>
   );
