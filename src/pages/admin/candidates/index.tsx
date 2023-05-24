@@ -7,7 +7,7 @@ import MaintenanceList from "@/components/organism/MaintenanceList";
 import Step from "@/components/organism/Step";
 import Head from "next/head";
 
-export default function Partners() {
+export default function Candidates() {
   return (
     <>
       <Head>
