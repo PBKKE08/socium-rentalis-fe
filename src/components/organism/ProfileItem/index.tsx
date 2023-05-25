@@ -19,11 +19,7 @@ export default function ProfileItem({ className }: ProfileItemProps) {
         />
         <div className="flex flex-col w-full gap-8">
           <ProfileDetail />
-          <Button
-            isPrimary
-            href="/partners/pre-register"
-            className="mb-3 w-1/2"
-          >
+          <Button isPrimary href="/partners/pre-register" className="w-1/2">
             Be Partner
           </Button>
         </div>
