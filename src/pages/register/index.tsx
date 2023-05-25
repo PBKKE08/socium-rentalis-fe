@@ -43,6 +43,16 @@ export default function Register() {
         </div>
         <div className="mb-6">
           <Input
+            id="dateOfBirth"
+            type="date"
+            isLabel={true}
+            labelName="Date of Birth"
+            placeholder="Enter your date of birth"
+            required
+          />
+        </div>
+        <div className="mb-6">
+          <Input
             id="phone"
             type="tel"
             isLabel={true}
