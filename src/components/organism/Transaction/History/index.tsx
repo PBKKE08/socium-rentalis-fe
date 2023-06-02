@@ -1,12 +1,17 @@
-import CardTransaction from "../../CardTransaction";
+import CardHistoryTransaction from "../../CardHistoryTransaction";
+type HistoryProps = {
+  className?: string;
+};
 
-export default function History() {
+export default function History({ className }: HistoryProps) {
   return (
-    <div className="flex flex-col justify-center items-center gap-8 pb-8 px-4 container mx-auto">
-      <CardTransaction />
-      <CardTransaction />
-      <CardTransaction />
-      <CardTransaction />
+    <div className={className}>
+      <div className="flex flex-col justify-center items-center gap-8">
+        <CardHistoryTransaction />
+        <CardHistoryTransaction />
+        <CardHistoryTransaction />
+        <CardHistoryTransaction />
+      </div>
     </div>
   );
 }

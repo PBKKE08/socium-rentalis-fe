@@ -6,9 +6,7 @@ export default function Transaction() {
   return (
     <MainLayoutTransaction>
       <TabTransaction name="history" />
-      <div className="container mx-auto">
-        <History />
-      </div>
+      <History className="pt-14 pb-8 px-4 lg:px-0 container mx-auto" />
     </MainLayoutTransaction>
   );
 }

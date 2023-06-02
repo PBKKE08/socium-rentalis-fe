@@ -7,7 +7,7 @@ type TabTransactionProps = {
 
 export default function TabTransaction({ name }: TabTransactionProps) {
   return (
-    <nav className="mb-14 flex container mx-auto">
+    <nav className="flex container mx-auto">
       <ul className="flex items-center gap-4 w-full px-4">
         <TabLink
           name="History"
