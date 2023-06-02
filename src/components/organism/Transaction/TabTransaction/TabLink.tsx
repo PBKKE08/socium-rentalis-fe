@@ -11,7 +11,10 @@ export default function TabLink({ href, name, isActive }: TabLinkProps) {
     <li>
       <Link
         href={href}
-        className={`text-heading ${isActive && "font-medium text-primary-300"}`}
+        className={`text-heading ${
+          isActive &&
+          "font-medium text-primary-300 border-b pb-2 border-primary-300"
+        }`}
       >
         {name}
       </Link>

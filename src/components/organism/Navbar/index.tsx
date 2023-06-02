@@ -32,7 +32,7 @@ export default function Navbar({ name, isPartner }: NavbarProps) {
   };
 
   return (
-    <nav className="p-4 md:flex md:flex-row md:justify-between md:items-center sm:container mx-auto border-b border-b-primary-100 gap-5 md:gap-0">
+    <nav className="p-4 px-lg-0 md:flex md:flex-row md:justify-between md:items-center sm:container mx-auto border-b border-b-primary-100 gap-5 md:gap-0">
       <div className="flex items-center justify-between">
         <NavLogo />
         <NavIcon onClick={handleNavIconClick} isOpen={isNavOpen} />
