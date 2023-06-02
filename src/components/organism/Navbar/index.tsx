@@ -6,9 +6,10 @@ import Button from "@/components/atoms/Button";
 
 type NavbarProps = {
   name: string;
+  isPartner?: boolean;
 };
 
-export default function Navbar({ name }: NavbarProps) {
+export default function Navbar({ name, isPartner }: NavbarProps) {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   useEffect(() => {
@@ -47,6 +48,11 @@ export default function Navbar({ name }: NavbarProps) {
           name="Profile"
           isActive={name === "profile" && true}
           href="/profile"
+        />
+        <NavLink
+          name="Transaction"
+          isActive={name === "transaction" && true}
+          href={isPartner ? "/partners/transaction" : "/transaction"}
         />
         <li>
           <Button href="/login">Login</Button>
