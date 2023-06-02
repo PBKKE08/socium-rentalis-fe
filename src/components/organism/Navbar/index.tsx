@@ -45,14 +45,14 @@ export default function Navbar({ name, isPartner }: NavbarProps) {
           href="/partners"
         />
         <NavLink
-          name="Profile"
-          isActive={name === "profile" && true}
-          href="/profile"
-        />
-        <NavLink
           name="Transaction"
           isActive={name === "transaction" && true}
           href={isPartner ? "/partners/transaction" : "/transaction"}
+        />
+        <NavLink
+          name="Profile"
+          isActive={name === "profile" && true}
+          href="/profile"
         />
         <li>
           <Button href="/login">Login</Button>

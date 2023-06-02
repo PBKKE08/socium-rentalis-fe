@@ -27,7 +27,7 @@ export default function Detail() {
           <p className="text-heading">4.9</p>
         </div>
       </div>
-      <Button href="/transaction/history/detail" className="">
+      <Button href="/transaction/detail/1212" className="">
         Details
       </Button>
     </div>

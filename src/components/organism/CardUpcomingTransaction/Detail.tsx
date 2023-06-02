@@ -18,7 +18,7 @@ export default function Detail() {
         <p className="text-font-primary-400">20 Februari 2023</p>
         <p className="text-font-primary-500">06.00 - 09.00</p>
       </div>
-      <Button href="/transaction/history/detail" className="">
+      <Button href="/transaction/detail/123123" className="">
         Details
       </Button>
     </div>
