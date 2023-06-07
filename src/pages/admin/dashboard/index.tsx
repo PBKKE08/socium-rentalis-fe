@@ -1,5 +1,25 @@
+import DashboardCard from "@/components/organism/Admin/DashboardCard";
 import AdminNavbar from "@/components/organism/Admin/Navbar";
 import Head from "next/head";
+
+const DashboardData = [
+  {
+    title: "Users",
+    number: 305,
+  },
+  {
+    title: "Partners",
+    number: 150,
+  },
+  {
+    title: "Categories",
+    number: 50,
+  },
+  {
+    title: "Transactions",
+    number: 50,
+  },
+];
 
 export default function AdminDashboard() {
   return (
@@ -12,6 +32,18 @@ export default function AdminDashboard() {
       </Head>
       <main>
         <AdminNavbar name="dashboard" />
+        <div className="container mt-8 p-4 mx-auto">
+          <h1 className="section-heading text-center mb-10">Dashboard</h1>
+          <div className="flex flex-wrap justify-center items-center gap-4">
+            {DashboardData.map((data) => (
+              <DashboardCard
+                title={data.title}
+                number={data.number}
+                key={data.title}
+              />
+            ))}
+          </div>
+        </div>
       </main>
     </>
   );

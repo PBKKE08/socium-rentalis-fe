@@ -12,7 +12,7 @@ export default function TabTransaction({ name }: TabTransactionProps) {
         <TabLink
           name="History"
           isActive={name === "history" && true}
-          href="/transaction"
+          href="/transaction/history"
         />
         <TabLink
           name="Upcoming"
