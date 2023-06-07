@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import NavIcon from "./NavIcon";
-import NavLink from "./NavLink";
 import NavLogo from "./NavLogo";
+import NavLink from "./NavLink";
 import Button from "@/components/atoms/Button";
 
-type NavbarProps = {
+type AdminNavbarProps = {
   name: string;
-  isPartner?: boolean;
 };
 
-export default function Navbar({ name, isPartner }: NavbarProps) {
+export default function AdminNavbar({ name }: AdminNavbarProps) {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   useEffect(() => {
@@ -38,24 +37,23 @@ export default function Navbar({ name, isPartner }: NavbarProps) {
         <NavIcon onClick={handleNavIconClick} isOpen={isNavOpen} />
       </div>
       <ul className="flex flex-col md:flex-row items-center gap-1 md:gap-4 justify-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto px-4 md:px-0 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-300 pb-4 md:pb-0">
-        <NavLink name="Home" isActive={name === "home" && true} href="/" />
         <NavLink
-          name="Partners"
-          isActive={name === "partners" && true}
-          href="/partners"
+          name="Dashboard"
+          isActive={name === "dashboard" && true}
+          href="/admin/dashboard"
         />
         <NavLink
-          name="Transaction"
-          isActive={name === "transaction" && true}
-          href={isPartner ? "/partners/transaction" : "/transaction/history"}
+          name="Users"
+          isActive={name === "users" && true}
+          href="/admin/users"
         />
         <NavLink
-          name="Profile"
-          isActive={name === "profile" && true}
-          href="/profile"
+          name="Transactions"
+          isActive={name === "transactions" && true}
+          href="/admin/transactions"
         />
         <li>
-          <Button href="/login">Login</Button>
+          <Button>Logout</Button>
         </li>
       </ul>
     </nav>

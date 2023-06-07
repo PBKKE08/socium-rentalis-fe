@@ -2,7 +2,7 @@ import MainLayoutTransaction from "@/components/organism/Transaction/MainLayoutT
 import TabTransaction from "@/components/organism/Transaction/TabTransaction";
 import Upcoming from "@/components/organism/Transaction/Upcoming";
 
-export default function Transaction() {
+export default function TransactionUpcoming() {
   return (
     <MainLayoutTransaction>
       <TabTransaction name="upcoming" />

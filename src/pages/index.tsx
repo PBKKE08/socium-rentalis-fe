@@ -6,7 +6,7 @@ import Navbar from "@/components/organism/Navbar";
 import Step from "@/components/organism/Step";
 import Head from "next/head";
 
-export default function Partners() {
+export default function Home() {
   return (
     <>
       <Head>
