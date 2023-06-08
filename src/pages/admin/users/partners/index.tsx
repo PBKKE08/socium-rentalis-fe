@@ -44,7 +44,7 @@ const usersData: PartnerCard[] = [
   },
 ];
 
-export default function AdminUsers() {
+export default function AdminPartners() {
   return (
     <>
       <Head>
@@ -56,13 +56,13 @@ export default function AdminUsers() {
       <main>
         <AdminNavbar name="users" />
         <div className="container mx-auto px-6 py-8">
-          <UsersTab name="users" />
+          <UsersTab name="partners" />
         </div>
         <div className="container mx-auto px-6 py-8">
           <div className="flex flex-wrap gap-4 items-start justify-start">
-            {usersData.map((user) => (
-              <UsersCard partner={user} />
-            ))}
+            {usersData.map(
+              (user) => user.isPartner && <UsersCard partner={user} />
+            )}
           </div>
         </div>
       </main>

@@ -1,10 +1,12 @@
 type PartnerCard = {
   name: string;
-  price: number;
-  category: string;
-  rating: number;
   gender: "male" | "female";
+  age?: number;
+  price?: number;
+  category?: string;
+  rating?: number;
   description?: string;
   id?: string | number;
   image?: string;
+  isPartner?: "accepted" | "pending" | "rejected";
 };
