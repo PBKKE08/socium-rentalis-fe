@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function NavLogo() {
   return (
-    <div className="flex items-center md:justify-center">
+    <Link className="flex items-center md:justify-center" href={`/`}>
       <Image
         src="/images/logo-sm.svg"
         alt="Socium Rentalis"
@@ -15,6 +16,6 @@ export default function NavLogo() {
         <span className="text-primary-200">Soc</span>ium <br />{" "}
         <span className="text-primary-200">Ren</span>talis
       </p>
-    </div>
+    </Link>
   );
 }

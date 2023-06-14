@@ -3,8 +3,14 @@ import { NumericFormat } from "react-number-format";
 
 export default function ProfileDetail() {
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       <p className="text-heading font-medium text-2xl mb-1">John Doe</p>
+      <p
+        className={`
+          text-white px-4 py-2 rounded-full text-sm max-w-fit bg-gray-500`}
+      >
+        Not a Partner
+      </p>
       <p className="text-heading font-bold text-3xl mb-4">
         <NumericFormat
           value={100000}
