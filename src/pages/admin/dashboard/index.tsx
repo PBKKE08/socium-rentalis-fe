@@ -1,5 +1,6 @@
 import DashboardCard from "@/components/organism/Admin/DashboardCard";
 import AdminNavbar from "@/components/organism/Admin/Navbar";
+import Footer from "@/components/organism/Footer";
 import Head from "next/head";
 
 const DashboardData = [
@@ -43,6 +44,9 @@ export default function AdminDashboard() {
               />
             ))}
           </div>
+        </div>
+        <div className="bg-primary-400 mt-10">
+          <Footer className="pt-20 pb-20 px-4 container mx-auto" />
         </div>
       </main>
     </>

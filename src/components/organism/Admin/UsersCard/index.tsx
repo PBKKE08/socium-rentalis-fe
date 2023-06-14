@@ -9,8 +9,7 @@ type UsersCardProps = {
 export default function UsersCard({ partner }: UsersCardProps) {
   return (
     <Link
-      // href={`/detail/${partner.id}`}
-      href={`#`}
+      href={`/admin/users/detail/${partner.id}`}
       className="w-2/3 sm:w-1/2 md:w-2/5 lg:w-1/5 flex flex-col gap-6 items-center justify-center hover:scale-105 duration-300"
     >
       <Image

@@ -1,6 +1,7 @@
 import AdminNavbar from "@/components/organism/Admin/Navbar";
 import UsersCard from "@/components/organism/Admin/UsersCard";
 import UsersTab from "@/components/organism/Admin/UsersTab";
+import Footer from "@/components/organism/Footer";
 import Head from "next/head";
 
 const usersData: PartnerCard[] = [
@@ -64,6 +65,9 @@ export default function AdminUsers() {
               <UsersCard partner={user} />
             ))}
           </div>
+        </div>
+        <div className="bg-primary-400 mt-10">
+          <Footer className="pt-20 pb-20 px-4 container mx-auto" />
         </div>
       </main>
     </>
