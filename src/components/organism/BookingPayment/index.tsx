@@ -1,3 +1,5 @@
+import Button from "@/components/atoms/Button";
+import BookingAccountDetail from "./BookingAccountDetail";
 import BookingItemNominal from "./BookingItemNominal";
 import BookingItemProfile from "./BookingItemProfile";
 import BookingPaymentForm from "./BookingPaymentForm";
@@ -19,6 +21,14 @@ export default function BookingPayment({ className }: BookingPaymentProps) {
           <BookingItemNominal title="Biaya Pajak (20%)" value={220000} />
           <BookingItemNominal title="Total Biaya" value={1320000} />
         </div>
+        <h1 className="section-heading mb-12">Account Information</h1>
+        <div className="flex flex-col gap-3 w-full mb-20">
+          <BookingAccountDetail title="Bank" value="Bank Central Asia" />
+          <BookingAccountDetail title="No. Rekening" value="1234567890" />
+          <BookingAccountDetail title="Atas Nama" value="John Doe" />
+        </div>
+
+        <Button isPrimary>Confirm Payment</Button>
       </div>
     </div>
   );
