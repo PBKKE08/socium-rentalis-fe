@@ -2,10 +2,11 @@ import Image from "next/image";
 
 type PaymentItemProps = {
   _id: string;
+  name: string;
   onChange?: () => void;
 };
 
-export default function PaymentItem({ _id, onChange }: PaymentItemProps) {
+export default function PaymentItem({ _id, onChange, name }: PaymentItemProps) {
   return (
     <label className="" htmlFor={_id} onChange={onChange}>
       <input
@@ -17,11 +18,11 @@ export default function PaymentItem({ _id, onChange }: PaymentItemProps) {
       />
       <div className="booking-payment-card relative">
         <Image
-          src={`/images/gopay-img.png`}
+          src={`/images/${name}-img.png`}
           width={243}
           height={137}
           alt="partner-img"
-          className="object-cover object-center rounded-xl shadow-md"
+          className="p-8 object-contain object-center rounded-xl shadow-md aspect-video"
           quality={100}
           loading="lazy"
         />

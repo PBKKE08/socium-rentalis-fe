@@ -2,7 +2,6 @@ import Button from "@/components/atoms/Button";
 import BookingAccountDetail from "./BookingAccountDetail";
 import BookingItemNominal from "./BookingItemNominal";
 import BookingItemProfile from "./BookingItemProfile";
-import BookingPaymentForm from "./BookingPaymentForm";
 
 type BookingPaymentProps = {
   className?: string;
