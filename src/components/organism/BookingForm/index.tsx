@@ -2,6 +2,7 @@ import Input from "@/components/atoms/Input";
 import { useState } from "react";
 import TextareaForm from "./TextareaForm";
 import Button from "@/components/atoms/Button";
+import BookingPaymentForm from "../BookingPayment/BookingPaymentForm";
 
 type BookingFormProps = {
   className?: string;
@@ -11,12 +12,14 @@ export default function BookingForm({ className }: BookingFormProps) {
   const [bookingDate, setBookingDate] = useState("");
   const [bookingStart, setBookingStart] = useState("");
   const [bookingEnd, setBookingEnd] = useState("");
+  const [bookingNote, setBookingNote] = useState("");
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log({ bookingDate });
     console.log({ bookingStart });
     console.log({ bookingEnd });
+    console.log({ bookingNote });
   };
 
   return (
@@ -24,7 +27,7 @@ export default function BookingForm({ className }: BookingFormProps) {
       <h1 className="section-heading mb-3 mt-10">Apply for New Appointment</h1>
 
       <form className="relative" onSubmit={submitHandler}>
-        <div className=" flex items-center gap-4 w-full mt-10 mb-6">
+        <div className="flex items-center gap-4 w-full mt-10 mb-6 flex-wrap md:flex-nowrap">
           <div className="w-full">
             <Input
               id="bookingDate"
@@ -53,7 +56,10 @@ export default function BookingForm({ className }: BookingFormProps) {
             />
           </div>
         </div>
-        <TextareaForm />
+        <TextareaForm onChange={(e) => setBookingNote(e.target.value)} />
+
+        <h1 className="section-heading mb-3 mt-5">Pay With</h1>
+        <BookingPaymentForm />
 
         <Button isPrimary type="submit" className="mt-10">
           Continue Booking
