@@ -3,6 +3,7 @@ import { useState } from "react";
 import TextareaForm from "./TextareaForm";
 import Button from "@/components/atoms/Button";
 import BookingPaymentForm from "../BookingPayment/BookingPaymentForm";
+import { useRouter } from "next/router";
 
 type BookingFormProps = {
   className?: string;
@@ -14,12 +15,15 @@ export default function BookingForm({ className }: BookingFormProps) {
   const [bookingEnd, setBookingEnd] = useState("");
   const [bookingNote, setBookingNote] = useState("");
 
+  const router = useRouter();
+
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log({ bookingDate });
     console.log({ bookingStart });
     console.log({ bookingEnd });
     console.log({ bookingNote });
+    router.push("/payment");
   };
 
   return (

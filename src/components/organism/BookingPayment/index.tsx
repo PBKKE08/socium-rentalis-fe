@@ -2,12 +2,17 @@ import Button from "@/components/atoms/Button";
 import BookingAccountDetail from "./BookingAccountDetail";
 import BookingItemNominal from "./BookingItemNominal";
 import BookingItemProfile from "./BookingItemProfile";
+import { useRouter } from "next/router";
 
 type BookingPaymentProps = {
   className?: string;
 };
 
 export default function BookingPayment({ className }: BookingPaymentProps) {
+  const router = useRouter();
+  const paymentHandler = () => {
+    router.push("/payment-complete");
+  };
   return (
     <div className={`flex flex-col lg:flex-row ${className}`}>
       <div className="w-full md:w-3/4 lg:w-1/2 mx-auto">
@@ -27,7 +32,9 @@ export default function BookingPayment({ className }: BookingPaymentProps) {
           <BookingAccountDetail title="Atas Nama" value="John Doe" />
         </div>
 
-        <Button isPrimary>Confirm Payment</Button>
+        <Button isPrimary onClick={paymentHandler}>
+          Confirm Payment
+        </Button>
       </div>
     </div>
   );
