@@ -23,6 +23,16 @@ export default function BookingForm({ className }: BookingFormProps) {
     console.log({ bookingStart });
     console.log({ bookingEnd });
     console.log({ bookingNote });
+
+    const bookingData = {
+      bookingDate,
+      bookingStart,
+      bookingEnd,
+      bookingNote,
+    };
+
+    localStorage.setItem("bookingData", JSON.stringify(bookingData));
+
     router.push("/payment");
   };
 

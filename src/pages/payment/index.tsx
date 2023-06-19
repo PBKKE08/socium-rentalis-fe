@@ -2,8 +2,24 @@ import BookingPayment from "@/components/organism/BookingPayment";
 import Footer from "@/components/organism/Footer";
 import Navbar from "@/components/organism/Navbar";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+// import { toast } from "react-toastify";
 
 export default function Payment() {
+  const router = useRouter();
+  useEffect(() => {
+    const bookingData = localStorage.getItem("bookingData");
+    if (!bookingData) {
+      // toast.error("Please fill the booking form first in the detail page", {
+      //   position: "top-center",
+      //   theme: "colored",
+      // });
+      router.back();
+      return;
+    }
+  }, []);
+
   return (
     <>
       <Head>
