@@ -36,7 +36,7 @@ export default function UsersCard({ partner }: UsersCardProps) {
           </p>
           <p className="text-heading text-lg font-semibold">
             <NumericFormat
-              value={partner.price}
+              value={partner.harga}
               displayType="text"
               prefix="IDR "
               suffix="/jam"
@@ -45,10 +45,10 @@ export default function UsersCard({ partner }: UsersCardProps) {
             />
           </p>
           <p className="text-lg text-font-primary-500 font-medium">
-            {partner.name}
+            {partner.nama}
           </p>
           <p className="text-font-primary-400">
-            {partner.gender} - {partner.category}
+            {partner.gender} - {partner.kategori}
           </p>
           <div className="flex gap-1 items-center">
             <Image
@@ -66,7 +66,7 @@ export default function UsersCard({ partner }: UsersCardProps) {
             Not a partner
           </p>
           <p className="text-lg text-font-primary-500 font-medium">
-            {partner.name}
+            {partner.nama}
           </p>
           <p className="text-font-primary-400">{partner.gender}</p>
         </div>
