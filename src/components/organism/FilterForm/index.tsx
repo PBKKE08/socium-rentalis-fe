@@ -14,10 +14,6 @@ export default function FilterForm({
   query,
   setQuery,
 }: FilterFormProps) {
-  // const [inputValue, setInputValue] = useState("");
-  // const [selectGender, setSelectGender] = useState("all");
-  // const [selectCategory, setSelectCategory] = useState("all");
-
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(query.area);
