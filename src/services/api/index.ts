@@ -14,7 +14,7 @@ export default async function callAPI({
   serverToken,
 }: callAPIProps) {
   try {
-    console.log({ token });
+    // console.log({ token });
 
     let headers = {};
     if (serverToken) {
@@ -31,7 +31,7 @@ export default async function callAPI({
       };
     } else headers = { "ngrok-skip-browser-warning": "69420" };
 
-    console.log({ headers });
+    // console.log({ headers });
 
     const response = await axios({
       url,
@@ -39,7 +39,7 @@ export default async function callAPI({
       data,
       headers,
     });
-    console.log({ response });
+    // console.log({ response });
     const result = {
       error: 0,
       code: "success",

@@ -48,7 +48,7 @@ export default function BookingPayment({ className }: BookingPaymentProps) {
     };
 
     const result: any = await postTransaction(data);
-    console.log({ result });
+    // console.log({ result });
     if (result.error) alert(result.message);
     else {
       localStorage.removeItem("bookingData");
