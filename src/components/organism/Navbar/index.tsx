@@ -3,6 +3,8 @@ import NavIcon from "./NavIcon";
 import NavLink from "./NavLink";
 import NavLogo from "./NavLogo";
 import Button from "@/components/atoms/Button";
+import { getDataToken, removeTokenFromCookies } from "@/services/token";
+import { useRouter } from "next/router";
 
 type NavbarProps = {
   name: string;
@@ -11,10 +13,18 @@ type NavbarProps = {
 
 export default function Navbar({ name, isPartner }: NavbarProps) {
   const [isNavOpen, setIsNavOpen] = useState(false);
-
+  const [user, setUser] = useState({});
+  const [isLogin, setIsLogin] = useState(false);
+  const router = useRouter();
   useEffect(() => {
     setIsNavOpen(false);
-  }, []);
+    const data = getDataToken();
+    if (!data) setIsLogin(false);
+    else {
+      setUser(data);
+      setIsLogin(true);
+    }
+  }, [isLogin]);
 
   const handleNavIconClick = () => {
     const nav = document.querySelector("nav");
@@ -31,6 +41,11 @@ export default function Navbar({ name, isPartner }: NavbarProps) {
     }
   };
 
+  const handleLogout = () => {
+    removeTokenFromCookies();
+    setIsLogin(false);
+    router.push("/");
+  };
   return (
     <nav className="p-4 px-lg-0 md:flex md:flex-row md:justify-between md:items-center sm:container mx-auto border-b border-b-primary-100 gap-5 md:gap-0">
       <div className="flex items-center justify-between">
@@ -55,7 +70,11 @@ export default function Navbar({ name, isPartner }: NavbarProps) {
           href="/profile"
         />
         <li>
-          <Button href="/login">Login</Button>
+          {isLogin ? (
+            <Button onClick={handleLogout}>Logout</Button>
+          ) : (
+            <Button href="/login">Login</Button>
+          )}
         </li>
       </ul>
     </nav>

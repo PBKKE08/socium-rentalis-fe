@@ -15,9 +15,13 @@ export function getTokenFromCookies() {
   return token;
 }
 
-export function getToken() {
+export function getDataToken() {
   const token = getTokenFromCookies();
   if (!token) return undefined;
   const tokenDecoded = jwtDecode(token);
   return tokenDecoded;
+}
+
+export function removeTokenFromCookies() {
+  Cookies.remove("token"); // remove token from cookie
 }
