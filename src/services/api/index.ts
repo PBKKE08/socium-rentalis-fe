@@ -3,7 +3,7 @@ import { getTokenFromCookies } from "../token";
 
 interface callAPIProps extends AxiosRequestConfig {
   token?: boolean;
-  serverToken?: boolean;
+  serverToken?: string;
 }
 
 export default async function callAPI({

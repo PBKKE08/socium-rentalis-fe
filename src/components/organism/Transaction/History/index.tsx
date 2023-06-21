@@ -1,16 +1,16 @@
 import CardHistoryTransaction from "../../CardHistoryTransaction";
 type HistoryProps = {
   className?: string;
+  histories?: any;
 };
 
-export default function History({ className }: HistoryProps) {
+export default function History({ className, histories }: HistoryProps) {
   return (
     <div className={className}>
       <div className="flex flex-col justify-center items-center gap-8">
-        <CardHistoryTransaction />
-        <CardHistoryTransaction />
-        <CardHistoryTransaction />
-        <CardHistoryTransaction />
+        {histories.map((item: any) => (
+          <CardHistoryTransaction key={item.id} data={item} />
+        ))}
       </div>
     </div>
   );

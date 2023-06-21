@@ -67,3 +67,14 @@ export async function postTransaction(data: any) {
   console.log({ transaction });
   return transaction;
 }
+
+export async function getTransaction(token: string) {
+  const transaction = await callAPI({
+    url: `${URL}/penggunapriv/history-transaksi
+`,
+    method: "GET",
+    serverToken: token,
+  });
+
+  return transaction;
+}

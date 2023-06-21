@@ -13,7 +13,9 @@ export default function PartnerCard({ partner }: PartnerCardProps) {
       className="w-2/3 sm:w-1/2 md:w-2/5 lg:w-1/5 flex flex-col gap-6 items-center justify-center hover:scale-105 duration-300"
     >
       <Image
-        src={`https://source.unsplash.com/random/?${partner.gender}`}
+        src={`https://source.unsplash.com/random/?${
+          partner.gender === "f" ? "female" : "male"
+        }`}
         width={500}
         height={500}
         alt="partner-img"
