@@ -1,6 +1,7 @@
 import BookingPayment from "@/components/organism/BookingPayment";
 import Footer from "@/components/organism/Footer";
 import Navbar from "@/components/organism/Navbar";
+import { getTokenFromCookiesAndDecodeForServer } from "@/services/token";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -37,4 +38,22 @@ export default function Payment() {
       </main>
     </>
   );
+}
+
+export async function getServerSideProps({ req }: { req: any }) {
+  const { token } = req.cookies;
+  const payload = getTokenFromCookiesAndDecodeForServer(token);
+
+  if (!token || !payload) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }

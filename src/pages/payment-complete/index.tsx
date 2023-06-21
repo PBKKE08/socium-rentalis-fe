@@ -1,6 +1,7 @@
 import Button from "@/components/atoms/Button";
 import Footer from "@/components/organism/Footer";
 import Navbar from "@/components/organism/Navbar";
+import { getTokenFromCookiesAndDecodeForServer } from "@/services/token";
 import Head from "next/head";
 
 export default function PaymentComplete() {
@@ -292,4 +293,22 @@ export default function PaymentComplete() {
       </main>
     </>
   );
+}
+
+export async function getServerSideProps({ req }: { req: any }) {
+  const { token } = req.cookies;
+  const payload = getTokenFromCookiesAndDecodeForServer(token);
+
+  if (!token || !payload) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }
