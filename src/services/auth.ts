@@ -9,3 +9,11 @@ export async function postSignUp(data: any) {
     data,
   });
 }
+export async function postLogin(data: any) {
+  const url = `${URL}/auth/login`;
+  return callAPI({
+    url,
+    method: "POST",
+    data,
+  });
+}

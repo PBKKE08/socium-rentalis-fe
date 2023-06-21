@@ -13,7 +13,6 @@ import { getPublicData } from "@/services/users";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
-import { toast } from "react-toastify";
 
 export default function Register() {
   const [cities, setCities] = useState([]); // [{id: "", name: ""}
@@ -77,6 +76,7 @@ export default function Register() {
 
     if (result.error) {
       console.log(result);
+      return alert(result.message);
     } else return router.push("/login");
   };
 
