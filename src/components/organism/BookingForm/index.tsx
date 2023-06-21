@@ -4,6 +4,7 @@ import TextareaForm from "./TextareaForm";
 import Button from "@/components/atoms/Button";
 import BookingPaymentForm from "../BookingPayment/BookingPaymentForm";
 import { useRouter } from "next/router";
+import PaymentItem from "../BookingPayment/PaymentItem";
 
 type BookingFormProps = {
   className?: string;
@@ -14,6 +15,7 @@ export default function BookingForm({ className }: BookingFormProps) {
   const [bookingStart, setBookingStart] = useState("");
   const [bookingEnd, setBookingEnd] = useState("");
   const [bookingNote, setBookingNote] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState(""); // ["BCA", "Mandiri"
 
   const router = useRouter();
 
@@ -23,12 +25,14 @@ export default function BookingForm({ className }: BookingFormProps) {
     // console.log({ bookingStart });
     // console.log({ bookingEnd });
     // console.log({ bookingNote });
+    // console.log({ paymentMethod });
 
     const bookingData = {
       bookingDate,
       bookingStart,
       bookingEnd,
       bookingNote,
+      paymentMethod,
     };
 
     localStorage.setItem("bookingData", JSON.stringify(bookingData));
@@ -73,8 +77,20 @@ export default function BookingForm({ className }: BookingFormProps) {
         <TextareaForm onChange={(e) => setBookingNote(e.target.value)} />
 
         <h1 className="section-heading mb-3 mt-5">Pay With</h1>
-        <BookingPaymentForm />
-
+        <div className="mb-10 flex flex-wrap gap-7 items-center justify-center w-full">
+          <PaymentItem
+            _id="BCA"
+            name="BCA"
+            value={"BCA"}
+            onClick={() => setPaymentMethod("BCA")}
+          />
+          <PaymentItem
+            _id="Mandiri"
+            name="Mandiri"
+            value={"Mandiri"}
+            onClick={() => setPaymentMethod("Mandiri")}
+          />
+        </div>
         <Button isPrimary type="submit" className="mt-10">
           Continue Booking
         </Button>

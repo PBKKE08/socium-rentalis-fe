@@ -12,6 +12,7 @@ export function getTokenFromCookies() {
   const tokenBase64: string | undefined = Cookies.get("token");
   if (!tokenBase64) return undefined;
   const token = atob(tokenBase64);
+  // console.log(token);
   return token;
 }
 

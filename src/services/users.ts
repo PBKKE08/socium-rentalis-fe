@@ -48,13 +48,22 @@ export async function getPartnerById(id: string) {
   return partner;
 }
 
-export async function postTransaction(data: any, token: string) {
+export async function postTransaction(data: any) {
+  //   {
+  //     "partner_id": "1e4ed79a-7c9e-4c7b-9b9f-9d86cc6c7c2d",
+  //     "booking_date": "2023-10-22",
+  //     "time_start": "08:00",
+  //     "time_end": "15:00",
+  //     "payment_type": "BCA",
+  //     "message": "Saya ganteng"
+  // }
+
   const transaction = await callAPI({
     url: `${URL}/booking/book`,
     method: "POST",
     data,
-    token,
+    token: true,
   });
-
+  console.log({ transaction });
   return transaction;
 }

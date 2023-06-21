@@ -1,7 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
+import { getTokenFromCookies } from "../token";
 
 interface callAPIProps extends AxiosRequestConfig {
-  token?: string;
+  token?: boolean;
+  serverToken?: boolean;
 }
 
 export default async function callAPI({
@@ -9,12 +11,27 @@ export default async function callAPI({
   method,
   data,
   token,
+  serverToken,
 }: callAPIProps) {
   try {
-    const headers = {
-      "ngrok-skip-browser-warning": "69420",
-      Authorization: token ? `Bearer ${token}` : "",
-    };
+    console.log({ token });
+
+    let headers = {};
+    if (serverToken) {
+      headers = {
+        "ngrok-skip-browser-warning": "69420",
+        Authorization: `Bearer ${serverToken}`,
+      };
+    } else if (token) {
+      const JWTToken = getTokenFromCookies();
+      if (!JWTToken) throw new Error("Token not found");
+      headers = {
+        "ngrok-skip-browser-warning": "69420",
+        Authorization: `Bearer ${JWTToken}`,
+      };
+    } else headers = { "ngrok-skip-browser-warning": "69420" };
+
+    console.log({ headers });
 
     const response = await axios({
       url,
@@ -22,7 +39,7 @@ export default async function callAPI({
       data,
       headers,
     });
-
+    console.log({ response });
     const result = {
       error: 0,
       code: "success",
