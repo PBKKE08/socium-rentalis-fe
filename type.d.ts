@@ -9,6 +9,7 @@ type PartnerCard = {
   id?: string | number;
   image?: string;
   isPartner?: "accepted" | "pending" | "rejected";
+  city?: string;
 };
 
 type QueryFilter = {

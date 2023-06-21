@@ -25,3 +25,17 @@ export function getDataToken() {
 export function removeTokenFromCookies() {
   Cookies.remove("token"); // remove token from cookie
 }
+
+export function getTokenFromCookiesServer(tokenFromServer: string) {
+  if (!tokenFromServer) return undefined;
+  const token = Buffer.from(tokenFromServer, "base64").toString("ascii");
+  if (!token) return undefined;
+  return token;
+}
+
+export function getTokenFromCookiesAndDecodeForServer(tokenFromServer: string) {
+  const token = getTokenFromCookiesServer(tokenFromServer);
+  if (!token) return undefined;
+  const payload = jwtDecode(token);
+  return payload;
+}

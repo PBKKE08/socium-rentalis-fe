@@ -27,12 +27,10 @@ export async function getPublicData(isCity: boolean, isCategory: boolean) {
     method: "GET",
   });
 
-  if (isCity && data.error === 0) {
+  if (isCity && data.error === 0 && !isCategory) {
     const cities = { ...data, data: data.data.cities };
     return cities;
-  }
-
-  if (isCategory && data.error === 0) {
+  } else if (isCategory && data.error === 0 && !isCity) {
     const categories = { ...data, data: data.data.categories };
     return categories;
   }
