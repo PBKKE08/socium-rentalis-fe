@@ -25,19 +25,19 @@ export default function PartnerCard({ partner }: PartnerCardProps) {
       <div className="flex flex-col gap-1 w-full">
         <p className="text-heading text-lg font-semibold">
           <NumericFormat
-            value={partner.price}
+            value={partner.harga}
             displayType="text"
             prefix="IDR "
-            suffix="/jam"
+            suffix=".000/jam"
             decimalSeparator=","
             thousandSeparator="."
           />
         </p>
         <p className="text-lg text-font-primary-500 font-medium">
-          {partner.name}
+          {partner.nama}
         </p>
         <p className="text-font-primary-400">
-          {partner.gender} - {partner.category}
+          {partner.gender === "m" ? "male" : "female"} - {partner.kategori}
         </p>
         <div className="flex gap-1 items-center">
           <Image
@@ -47,25 +47,6 @@ export default function PartnerCard({ partner }: PartnerCardProps) {
             alt="star"
           />
           <p className="text-heading">{partner.rating}</p>
-          {/* {Array.from(Array(rating).keys()).map((_, index) => (
-            <Image
-              src="/images/icon-star.svg"
-              width={20}
-              height={20}
-              alt="star"
-              key={index}
-            />
-          ))} */}
-
-          {/* {Array.from(Array(5 - rating).keys()).map((_, index) => (
-            <Image
-              src="/images/star-outline.svg"
-              width={20}
-              height={20}
-              alt="star"
-              key={index}
-            />
-          ))} */}
         </div>
       </div>
     </Link>

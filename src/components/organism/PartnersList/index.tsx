@@ -2,6 +2,7 @@ import PartnerCard from "../../atoms/PartnerCard";
 
 type PartnersListProps = {
   className?: string;
+  partners: any;
 };
 
 const partnersData: PartnerCard[] = [
@@ -39,11 +40,14 @@ const partnersData: PartnerCard[] = [
   },
 ];
 
-export default function PartnersList({ className }: PartnersListProps) {
+export default function PartnersList({
+  className,
+  partners,
+}: PartnersListProps) {
   return (
     <div className={className}>
       <div className="flex flex-wrap gap-4 items-center justify-center">
-        {partnersData.map((partner) => (
+        {partners.map((partner: any) => (
           <PartnerCard partner={partner} key={partner.id} />
         ))}
       </div>

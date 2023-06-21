@@ -1,12 +1,18 @@
 type PartnerCard = {
-  name: string;
-  gender: "male" | "female";
+  nama: string;
+  gender: "m" | "f";
   age?: number;
-  price?: number;
-  category?: string;
+  harga?: number;
+  kategori?: string;
   rating?: number;
   description?: string;
   id?: string | number;
   image?: string;
   isPartner?: "accepted" | "pending" | "rejected";
+};
+
+type QueryFilter = {
+  area?: string;
+  gender?: string;
+  category?: string;
 };

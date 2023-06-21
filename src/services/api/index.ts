@@ -16,20 +16,23 @@ export default async function callAPI({
       url,
       method,
       data,
-      // headers: {
-      //   Authorization: `Bearer ${token}`,
-      // },
+      headers: {
+        // Authorization: `Bearer ${token}`,
+        "ngrok-skip-browser-warning": "69420",
+      },
     });
 
     const result = {
       error: 0,
-      status: "success",
-      data: response.data,
+      code: "success",
+      data: response.data.data,
     };
+
+    return result;
   } catch (error: any) {
     return {
       error: 1,
-      message: error.response.data.message,
+      message: error.message,
       data: null,
     };
   }
