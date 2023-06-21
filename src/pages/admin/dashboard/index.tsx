@@ -2,6 +2,7 @@ import DashboardCard from "@/components/organism/Admin/DashboardCard";
 import AdminNavbar from "@/components/organism/Admin/Navbar";
 import Footer from "@/components/organism/Footer";
 import Head from "next/head";
+import Hero from "@/components/organism/Admin/Hero";
 
 const DashboardData = [
   {
@@ -34,8 +35,9 @@ export default function AdminDashboard() {
       <main>
         <AdminNavbar name="dashboard" />
         <div className="container mt-8 p-4 mx-auto">
-          <h1 className="section-heading text-center mb-10">Dashboard</h1>
-          <div className="flex flex-wrap justify-center items-center gap-4">
+          <h1 className="section-heading text-left mb-10">Dashboard</h1>
+          <Hero className="pt-20 pb-8 px-4 container mx-auto" />
+          {/* <div className="flex flex-wrap justify-center items-center gap-4">
             {DashboardData.map((data) => (
               <DashboardCard
                 title={data.title}
@@ -43,7 +45,7 @@ export default function AdminDashboard() {
                 key={data.title}
               />
             ))}
-          </div>
+          </div> */}
         </div>
         <div className="bg-primary-400 mt-10">
           <Footer className="pt-20 pb-20 px-4 container mx-auto" />

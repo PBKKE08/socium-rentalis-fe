@@ -43,23 +43,23 @@ export default function FilterForm({ className }: FilterFormProps) {
           <option value="female">Female</option>
         </Select>
 
-        <Select
+        {/* <Select
           value={selectCategory}
           onChange={(e) => setSelectCategory(e.target.value)}
         >
           <option value="all">Select Category</option>
           <option value="cars">Cars</option>
           <option value="bike">Bike</option>
-        </Select>
+        </Select> */}
 
         <Button type="submit" isPrimary>
           Apply Filters
         </Button>
       </form>
       <p className="text-heading mt-8">
-        Show search by {inputValue ? `name: ${inputValue}` : ""}{" "}
+        Show search by {inputValue ? `name: ${inputValue}` + "," : ""}{" "}
         {selectGender !== "all" ? `gender: ${selectGender}` : ""}{" "}
-        {selectCategory !== "all" ? `category: ${selectCategory}` : ""}
+        {/* {selectCategory !== "all" ? `category: ${selectCategory}` : ""} */}
       </p>
     </div>
   );
