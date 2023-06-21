@@ -18,7 +18,6 @@ export default function PreRegister() {
           Syarat dan Ketentuan
         </h2>
         <ul className="text-base text-font-primary-400 mt-3 mb-10 list-disc">
-          <li>Berumur minimal 18 tahun</li>
           <li>
             Jika membatalkan orderan lebih dari 3 kali, maka akun akan di ban
             secara permanen
