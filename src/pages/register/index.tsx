@@ -37,7 +37,7 @@ export default function Register() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log({ name, phone, email, password, gender, city });
+    // console.log({ name, phone, email, password, gender, city });
     if (
       name === "" ||
       phone === "" ||
@@ -71,11 +71,11 @@ export default function Register() {
       city_id: city,
       password,
     };
-    console.log({ data });
+    // console.log({ data });
     const result: any = await postSignUp(data);
 
     if (result.error) {
-      console.log(result);
+      // console.log(result);
       return alert(result.message);
     } else return router.push("/login");
   };

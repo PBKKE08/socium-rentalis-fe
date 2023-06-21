@@ -12,7 +12,7 @@ export default function BestPartners({ className }: BestPartnersProps) {
   const getAllPartners = useCallback(async () => {
     const result = await getPartners();
     setPartners(result.data);
-    console.log(result.data);
+    // console.log(result.data);
   }, [getPartners]);
 
   useEffect(() => {

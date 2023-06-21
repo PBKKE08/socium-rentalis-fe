@@ -19,10 +19,10 @@ export default function BookingForm({ className }: BookingFormProps) {
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log({ bookingDate });
-    console.log({ bookingStart });
-    console.log({ bookingEnd });
-    console.log({ bookingNote });
+    // console.log({ bookingDate });
+    // console.log({ bookingStart });
+    // console.log({ bookingEnd });
+    // console.log({ bookingNote });
 
     const bookingData = {
       bookingDate,

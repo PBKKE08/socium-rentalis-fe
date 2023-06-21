@@ -16,7 +16,7 @@ export default function Login() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log({ email, password });
+    // console.log({ email, password });
 
     if (email === "" || password === "")
       return alert("Please fill all the fields");
@@ -28,12 +28,12 @@ export default function Login() {
       password,
     };
 
-    console.log({ data });
+    // console.log({ data });
 
     const result: any = await postLogin(data);
 
     if (result.error) {
-      console.log(result);
+      // console.log(result);
       return alert(result.message);
     } else {
       // console.log(result.data.token);

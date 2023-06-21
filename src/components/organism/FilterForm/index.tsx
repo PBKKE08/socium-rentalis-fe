@@ -27,7 +27,7 @@ export default function FilterForm({ className, setQuery }: FilterFormProps) {
 
   const getDataDropdown = useCallback(async () => {
     const result: any = await getPublicData(true, true);
-    console.log(result);
+    // console.log(result);
     setAreas(result.data.cities);
     setCategories(result.data.categories);
   }, [getPublicData, areas, categories]);

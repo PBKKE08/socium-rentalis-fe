@@ -17,7 +17,7 @@ export default function Partners() {
   const getAllPartners = useCallback(async () => {
     const result = await getPartners(query);
     setPartners(result.data);
-    console.log(result.data);
+    // console.log(result.data);
   }, [getPartners, query]);
 
   useEffect(() => {
