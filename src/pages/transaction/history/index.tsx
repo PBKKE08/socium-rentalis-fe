@@ -21,8 +21,8 @@ export default function TransactionHistory({
     )
   );
 
-  console.log({ transactions });
-  console.log({ data });
+  // console.log({ transactions });
+  // console.log({ data });
 
   return (
     <MainLayoutTransaction>

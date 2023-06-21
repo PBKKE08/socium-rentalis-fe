@@ -2,11 +2,19 @@ import Button from "@/components/atoms/Button";
 import Image from "next/image";
 import React from "react";
 
-export default function CardUpcomingTransaction() {
+type CardUpcomingTransactionProps = {
+  data: any;
+};
+
+export default function CardUpcomingTransaction({
+  data,
+}: CardUpcomingTransactionProps) {
   return (
     <div className="flex items-center justify-center gap-4 w-full md:w-3/4 lg:w-2/4 border border-font-primary-300 p-4 rounded-lg flex-col md:flex-row">
       <Image
-        src={`https://source.unsplash.com/random/?female`}
+        src={`https://source.unsplash.com/random/?${
+          data.gender === "f" ? "female" : "male"
+        }`}
         width={100}
         height={100}
         alt="partner-img"
@@ -20,15 +28,19 @@ export default function CardUpcomingTransaction() {
           className="flex flex-col gap-2 w-full justify-center items-center md:justify-start md:items-start"
           style={{ flex: "1 0 70%" }}
         >
-          <p className="text-heading text-xl font-medium">Katarina</p>
-          <p className="text-white px-4 py-2 rounded-full text-sm max-w-fit bg-yellow-500">
-            Pending
+          <p className="text-heading text-xl font-medium">
+            {data.partner_name}
           </p>
-          <p className="text-font-primary-500">Kondangan</p>
-          <p className="text-font-primary-400">20 Februari 2023</p>
-          <p className="text-font-primary-500">06.00 - 09.00</p>
+          <p className="text-white px-4 py-2 rounded-full text-sm max-w-fit bg-blue-500">
+            {data.order_status === "3" && "Upcoming"}
+          </p>
+          <p className="text-font-primary-500">{data.category}</p>
+          <p className="text-font-primary-400">{data.booking_date}</p>
+          <p className="text-font-primary-500">
+            {data.start} - {data.end}
+          </p>
         </div>
-        <Button href="/transaction/detail/123123" className="">
+        <Button href={`/transaction/detail/${data.order_id}`} className="">
           Details
         </Button>
       </div>

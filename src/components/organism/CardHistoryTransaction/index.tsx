@@ -57,7 +57,7 @@ export default function CardHistoryTransaction({
             <p className="text-heading"></p>
           </div>
         </div>
-        <Button href={`/transaction/detail/21212`} className="">
+        <Button href={`/transaction/detail/${data.order_id}`} className="">
           Details
         </Button>
       </div>
