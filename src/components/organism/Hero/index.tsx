@@ -11,7 +11,7 @@ export default function Hero({ className }: HeroProps) {
         <HeroContent />
         <Image
           alt="hero-img"
-          src="/images/hero-img.png"
+          src="/images/sc-feature.jpg"
           width={500}
           height={500}
           quality={100}

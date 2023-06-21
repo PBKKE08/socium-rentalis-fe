@@ -19,7 +19,7 @@ export default function Home() {
         <Navbar name="home" />
         <Hero className="pt-20 pb-8 px-4 container mx-auto" />
         <Step className="pt-20 mb-20 px-4 container mx-auto" />
-        <div className="bg-font-primary-100">
+        <div className="bg-primary-100">
           <Categories className="pt-20 pb-20 px-4 container mx-auto" />
         </div>
         <BestPartners className="pt-20 pb-8 px-4 container mx-auto mb-20" />
