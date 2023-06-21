@@ -37,3 +37,24 @@ export async function getPublicData(isCity: boolean, isCategory: boolean) {
 
   return data;
 }
+
+export async function getPartnerById(id: string) {
+  console.log(id);
+  const partner = await callAPI({
+    url: `${URL}/partner/${id}`,
+    method: "GET",
+  });
+
+  return partner;
+}
+
+export async function postTransaction(data: any, token: string) {
+  const transaction = await callAPI({
+    url: `${URL}/booking/book`,
+    method: "POST",
+    data,
+    token,
+  });
+
+  return transaction;
+}

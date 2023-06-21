@@ -11,15 +11,16 @@ export default async function callAPI({
   token,
 }: callAPIProps) {
   try {
-    const headers = {};
+    const headers = {
+      "ngrok-skip-browser-warning": "69420",
+      Authorization: token ? `Bearer ${token}` : "",
+    };
+
     const response = await axios({
       url,
       method,
       data,
-      headers: {
-        // Authorization: `Bearer ${token}`,
-        "ngrok-skip-browser-warning": "69420",
-      },
+      headers,
     });
 
     const result = {
