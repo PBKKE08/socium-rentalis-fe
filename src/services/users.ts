@@ -78,3 +78,47 @@ export async function getTransaction(token: string) {
 
   return transaction;
 }
+
+export async function getTransactionById(id: string) {
+  //   {
+  //     "code": 200,
+  //     "data": {
+  //         "order_id": "2b5cbd84-3e04-4b31-bec0-3f31d299fd4a",
+  //         "partner_name": "Partner 8",
+  //         "partner_id": "42e68281-d8a0-4a39-968b-11e3ac3f99cd",
+  //         "category": "Default",
+  //         "booking_date": "2023-06-23",
+  //         "start": "14:00:00",
+  //         "end": "19:00:00",
+  //         "order_status": "3",
+  //         "price": "150000",
+  //         "payment_type": "Mandiri",
+  //         "is_paid": false
+  //     },
+  //     "msg": "OK"
+  // }
+  const transaction = await callAPI({
+    url: `${URL}/penggunapriv/history-transaksi/${id}`,
+    method: "GET",
+    token: true,
+  });
+
+  return transaction;
+}
+
+export async function postReview(data: any) {
+  //   {
+  //     "partner_id": "1e4ed79a-7c9e-4c7b-9b9f-9d86cc6c7c2d",
+  //     "rating": 5,
+  //     "comment": "Saya ganteng"
+  // }
+
+  const review = await callAPI({
+    url: `${URL}/penggunapriv/review`,
+    method: "POST",
+    data,
+    token: true,
+  });
+  // console.log({ review });
+  return review;
+}
