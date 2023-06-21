@@ -29,15 +29,17 @@ export default function Login() {
     };
 
     // console.log({ data });
-
+    console.log("wait");
     const result: any = await postLogin(data);
+    console.log("done");
 
     if (result.error) {
-      // console.log(result);
-      return alert(result.message);
+      console.log(result);
+      return alert("Login failed");
     } else {
       // console.log(result.data.token);
       saveTokenToCookies(result.data.token);
+      router.push("/");
     }
   };
   return (
