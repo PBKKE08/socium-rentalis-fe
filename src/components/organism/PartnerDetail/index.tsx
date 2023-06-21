@@ -30,7 +30,8 @@ export default function PartnerDetail({ className }: PartnerDetailProps) {
     const { partnerId } = query;
     const result = await getPartnerById(partnerId as string);
     setData(result.data);
-    console.log(result.data);
+    // console.log(result.data);
+    localStorage.setItem("partnerData", result.data);
     if (!result.data) return push("/404");
     setIsLoading(false);
   }, [query, isReady, getPartnerById]);
