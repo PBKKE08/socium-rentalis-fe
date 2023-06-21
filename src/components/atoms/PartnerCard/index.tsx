@@ -37,7 +37,8 @@ export default function PartnerCard({ partner }: PartnerCardProps) {
           {partner.name}
         </p>
         <p className="text-font-primary-400">
-          {partner.gender} - {partner.category}
+          {partner.gender}
+          {/* - {partner.category} */}
         </p>
         <div className="flex gap-1 items-center">
           <Image
