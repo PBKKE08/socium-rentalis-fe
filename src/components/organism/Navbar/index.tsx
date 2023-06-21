@@ -3,8 +3,13 @@ import NavIcon from "./NavIcon";
 import NavLink from "./NavLink";
 import NavLogo from "./NavLogo";
 import Button from "@/components/atoms/Button";
-import { getDataToken, removeTokenFromCookies } from "@/services/token";
+import {
+  getDataPartnerToken,
+  getDataToken,
+  removeTokenFromCookies,
+} from "@/services/token";
 import { useRouter } from "next/router";
+import { removeTokenPartnerFromCookies } from "@/services/token";
 
 type NavbarProps = {
   name: string;
@@ -19,8 +24,12 @@ export default function Navbar({ name, isPartner }: NavbarProps) {
   useEffect(() => {
     setIsNavOpen(false);
     const data = getDataToken();
-    if (!data) setIsLogin(false);
-    else {
+    const dataPartner = getDataPartnerToken();
+    if (!data || !dataPartner) setIsLogin(false);
+    else if (dataPartner) {
+      setUser(dataPartner);
+      setIsLogin(true);
+    } else {
       setUser(data);
       setIsLogin(true);
     }
@@ -43,6 +52,7 @@ export default function Navbar({ name, isPartner }: NavbarProps) {
 
   const handleLogout = () => {
     removeTokenFromCookies();
+    removeTokenPartnerFromCookies();
     setIsLogin(false);
     router.push("/");
   };
@@ -73,7 +83,10 @@ export default function Navbar({ name, isPartner }: NavbarProps) {
           {isLogin ? (
             <Button onClick={handleLogout}>Logout</Button>
           ) : (
-            <Button href="/login">Login</Button>
+            <div className="flex justify-center items-center gap-1">
+              <Button href="/login">Login</Button>
+              {/* <Button href="/partners/login">Login Partners</Button> */}
+            </div>
           )}
         </li>
       </ul>

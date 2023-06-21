@@ -1,8 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { getTokenFromCookies } from "../token";
+import { getTokenAdminFromCookies, getTokenFromCookies } from "../token";
 
 interface callAPIProps extends AxiosRequestConfig {
   token?: boolean;
+  tokenAdmin?: boolean;
   serverToken?: string;
 }
 
@@ -12,6 +13,7 @@ export default async function callAPI({
   data,
   token,
   serverToken,
+  tokenAdmin,
 }: callAPIProps) {
   try {
     // console.log({ token });
@@ -24,6 +26,13 @@ export default async function callAPI({
       };
     } else if (token) {
       const JWTToken = getTokenFromCookies();
+      if (!JWTToken) throw new Error("Token not found");
+      headers = {
+        "ngrok-skip-browser-warning": "69420",
+        Authorization: `Bearer ${JWTToken}`,
+      };
+    } else if (tokenAdmin) {
+      const JWTToken = getTokenAdminFromCookies();
       if (!JWTToken) throw new Error("Token not found");
       headers = {
         "ngrok-skip-browser-warning": "69420",

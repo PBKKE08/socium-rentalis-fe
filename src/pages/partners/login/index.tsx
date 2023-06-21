@@ -49,7 +49,7 @@ export default function Login() {
 
       <h1 className="text-heading text-4xl font-semibold">Login</h1>
       <p className="text-base text-font-primary-400 mt-3">
-        Login before you place an order partner.
+        Login before you can get the offers.
       </p>
 
       <form className="w-full md:w-96 mt-8" onSubmit={handleSubmit}>
@@ -80,10 +80,10 @@ export default function Login() {
         <Button isPrimary type="submit" className="mb-3">
           Login
         </Button>
-        <Button href="/register" className="mb-3">
+        <Button href="/partners/pre-register" className="mb-3">
           Register
         </Button>
-        <Button href="/partners/login">Login Partners</Button>
+        <Button href="/login">Login User</Button>
       </form>
     </div>
   );
