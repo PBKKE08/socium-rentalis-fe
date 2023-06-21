@@ -32,6 +32,7 @@ export default async function callAPI({
   } catch (error: any) {
     return {
       error: 1,
+      fullError: error,
       message: error.message,
       data: null,
     };

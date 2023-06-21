@@ -17,3 +17,23 @@ export async function getPartners(query: QueryFilter) {
 
   return partners;
 }
+
+export async function getPublicData(isCity: boolean, isCategory: boolean) {
+  // ke / public / cc;
+  const data: any = await callAPI({
+    url: `${URL}/public/cc`,
+    method: "GET",
+  });
+
+  if (isCity && data.error === 0) {
+    const cities = { ...data, data: data.data.cities };
+    return cities;
+  }
+
+  if (isCategory && data.error === 0) {
+    const categories = { ...data, data: data.data.categories };
+    return categories;
+  }
+
+  return data;
+}
