@@ -28,7 +28,7 @@ export default function PartnerCard({ partner }: PartnerCardProps) {
             value={partner.harga}
             displayType="text"
             prefix="IDR "
-            suffix=".000/jam"
+            suffix="/jam"
             decimalSeparator=","
             thousandSeparator="."
           />

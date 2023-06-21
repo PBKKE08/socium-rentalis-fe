@@ -13,7 +13,7 @@ export default function Partners() {
     gender: "",
     category: "",
   });
-  console.log({ query });
+  // console.log({ query });
   const getAllPartners = useCallback(async () => {
     const result = await getPartners(query);
     setPartners(result.data);
