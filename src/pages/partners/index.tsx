@@ -13,15 +13,16 @@ export default function Partners() {
     gender: "",
     category: "",
   });
+  console.log({ query });
   const getAllPartners = useCallback(async () => {
     const result = await getPartners(query);
-    console.log(result);
     setPartners(result.data);
-  }, [getPartners]);
+    console.log(result.data);
+  }, [getPartners, query]);
 
   useEffect(() => {
     getAllPartners();
-  }, []);
+  }, [query]);
 
   return (
     <>
@@ -35,13 +36,18 @@ export default function Partners() {
         <Navbar name="partners" />
         <FilterForm
           className="pt-10 pb-8 px-4 container mx-auto"
-          query={query}
           setQuery={setQuery}
         />
-        <PartnersList
-          className="pt-10 pb-8 px-4 container mx-auto"
-          partners={partners}
-        />
+        {partners ? (
+          <PartnersList
+            className="pt-10 pb-8 px-4 container mx-auto"
+            partners={partners}
+          />
+        ) : (
+          <div className="text-center text-2xl font-bold">
+            No Partners Found
+          </div>
+        )}
         <div className="bg-primary-400">
           <Footer className="pt-20 pb-20 px-4 container mx-auto" />
         </div>

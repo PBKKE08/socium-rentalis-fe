@@ -5,20 +5,21 @@ import { useState } from "react";
 
 type FilterFormProps = {
   className?: string;
-  query: QueryFilter;
   setQuery: (query: any) => void;
 };
 
-export default function FilterForm({
-  className,
-  query,
-  setQuery,
-}: FilterFormProps) {
+export default function FilterForm({ className, setQuery }: FilterFormProps) {
+  const [categoryFilter, setCategoryFilter] = useState<any>("");
+  const [areaFilter, setAreaFilter] = useState<any>("");
+  const [genderFilter, setGenderFilter] = useState<any>("");
+
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(query.area);
-    console.log(query.gender);
-    console.log(query.category);
+    setQuery({
+      area: areaFilter,
+      gender: genderFilter,
+      category: categoryFilter,
+    });
   };
 
   return (
@@ -29,8 +30,8 @@ export default function FilterForm({
         onSubmit={submitHandler}
       >
         <Select
-          value={query.area}
-          onChange={(e) => setQuery({ ...query, area: e.target.value })}
+          value={areaFilter}
+          onChange={(e) => setAreaFilter(e.target.value)}
         >
           <option value="all">Select Area</option>
           <option value="Bandung">Bandung</option>
@@ -40,8 +41,8 @@ export default function FilterForm({
           <option value="Malang">Malang</option>
         </Select>
         <Select
-          value={query.gender}
-          onChange={(e) => setQuery({ ...query, gender: e.target.value })}
+          value={genderFilter}
+          onChange={(e) => setGenderFilter(e.target.value)}
         >
           <option value="all">Select Gender</option>
           <option value="m">Male</option>
@@ -49,8 +50,8 @@ export default function FilterForm({
         </Select>
 
         <Select
-          value={query.category}
-          onChange={(e) => setQuery({ ...query, category: e.target.value })}
+          value={categoryFilter}
+          onChange={(e) => setCategoryFilter(e.target.value)}
         >
           <option value="all">Select Category</option>
           <option value="Prom">Prom</option>
@@ -64,9 +65,9 @@ export default function FilterForm({
         </Button>
       </form>
       <p className="text-heading mt-8">
-        Show search by {query.area !== "all" ? `area: ${query.area}` : ""}{" "}
-        {query.gender !== "all" ? `gender: ${query.gender}` : ""}{" "}
-        {query.category !== "all" ? `category: ${query.category}` : ""}
+        Show search by {areaFilter !== "all" ? `area: ${areaFilter}` : ""}{" "}
+        {genderFilter !== "all" ? `gender: ${genderFilter}` : ""}{" "}
+        {categoryFilter !== "all" ? `category: ${categoryFilter}` : ""}
       </p>
     </div>
   );
