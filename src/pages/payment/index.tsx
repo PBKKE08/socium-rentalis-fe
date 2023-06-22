@@ -1,22 +1,26 @@
 import BookingPayment from "@/components/organism/BookingPayment";
 import Footer from "@/components/organism/Footer";
 import Navbar from "@/components/organism/Navbar";
+import {
+  getTokenFromCookiesAndDecodeForServer,
+  getTokenPartnerFromCookiesServer,
+} from "@/services/token";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // import { toast } from "react-toastify";
 
 export default function Payment() {
+  const [bookingData, setBookingData] = useState({});
+  const [partnerData, setPartnerData] = useState({});
   const router = useRouter();
   useEffect(() => {
-    const bookingData = localStorage.getItem("bookingData");
-    if (!bookingData) {
-      // toast.error("Please fill the booking form first in the detail page", {
-      //   position: "top-center",
-      //   theme: "colored",
-      // });
-      router.back();
-      return;
+    const dataBooking = localStorage.getItem("bookingData");
+    const dataPartner = localStorage.getItem("partnerData");
+    if (!dataBooking || !dataPartner) router.back();
+    else {
+      setBookingData(JSON.parse(dataBooking));
+      setPartnerData(JSON.parse(dataPartner));
     }
   }, []);
 
@@ -37,4 +41,23 @@ export default function Payment() {
       </main>
     </>
   );
+}
+
+export async function getServerSideProps({ req }: { req: any }) {
+  const { token, tokenPartner } = req.cookies;
+  const payload = getTokenFromCookiesAndDecodeForServer(token);
+  const payloadPartner = getTokenPartnerFromCookiesServer(tokenPartner);
+
+  if ((!token || !payload) && (!tokenPartner || !payloadPartner)) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }

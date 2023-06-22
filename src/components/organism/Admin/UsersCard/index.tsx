@@ -1,19 +1,37 @@
+import Button from "@/components/atoms/Button";
+import { accPartner, rejectPartner } from "@/services/admin";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { NumericFormat } from "react-number-format";
 
 type UsersCardProps = {
-  partner: PartnerCard;
+  partner: any;
 };
 
 export default function UsersCard({ partner }: UsersCardProps) {
+  const router = useRouter();
+  const acceptHandler = async (id: string, email: string) => {
+    const result: any = await accPartner(id, email);
+
+    if (result.error) return alert(result.message);
+    alert("Partner accepted");
+    router.reload();
+  };
+  const rejectHandler = async (id: string, email: string) => {
+    const result: any = await rejectPartner(id, email);
+
+    if (result.error) return alert(result.message);
+    alert("Partner rejected");
+    router.reload();
+  };
   return (
-    <Link
-      href={`/admin/users/detail/${partner.id}`}
-      className="w-2/3 sm:w-1/2 md:w-2/5 lg:w-1/5 flex flex-col gap-6 items-center justify-center hover:scale-105 duration-300"
-    >
+    <div className="w-2/3 sm:w-1/2 md:w-2/5 lg:w-1/5 flex flex-col gap-6 items-center justify-center ">
       <Image
-        src={`https://source.unsplash.com/random/?${partner.gender}`}
+        src={`https://source.unsplash.com/random/?${
+          partner.gender === "f" ? "female" : "male"
+        }`}
         width={500}
         height={500}
         alt="partner-img"
@@ -22,7 +40,7 @@ export default function UsersCard({ partner }: UsersCardProps) {
         loading="lazy"
       />
 
-      {partner.isPartner ? (
+      {/* {partner.isPartner ? (
         <div className="flex flex-col gap-1 w-full">
           <p
             className={`
@@ -36,7 +54,7 @@ export default function UsersCard({ partner }: UsersCardProps) {
           </p>
           <p className="text-heading text-lg font-semibold">
             <NumericFormat
-              value={partner.price}
+              value={partner.harga}
               displayType="text"
               prefix="IDR "
               suffix="/jam"
@@ -45,11 +63,13 @@ export default function UsersCard({ partner }: UsersCardProps) {
             />
           </p>
           <p className="text-lg text-font-primary-500 font-medium">
-            {partner.name}
+            {partner.nama}
           </p>
           <p className="text-font-primary-400">
+
             {partner.gender}
             {/* - {partner.category} */}
+
           </p>
           <div className="flex gap-1 items-center">
             <Image
@@ -67,11 +87,52 @@ export default function UsersCard({ partner }: UsersCardProps) {
             Not a partner
           </p>
           <p className="text-lg text-font-primary-500 font-medium">
-            {partner.name}
+            {partner.nama}
           </p>
           <p className="text-font-primary-400">{partner.gender}</p>
         </div>
-      )}
-    </Link>
+      )} */}
+      <div className="flex flex-col gap-1 w-full">
+        <p className="text-lg text-font-primary-500 font-medium">
+          {partner.name}
+        </p>
+        <p className="text-heading text-lg font-semibold">
+          <NumericFormat
+            value={partner.price}
+            displayType="text"
+            prefix="IDR "
+            suffix="/jam"
+            decimalSeparator=","
+            thousandSeparator="."
+          />
+        </p>
+        <p className="text-font-primary-400">
+          {partner.gender === "f" ? "female" : "male"} - {partner.category_name}
+        </p>
+        <p className="text-font-primary-400">{partner.city}</p>
+        <p className="text-font-primary-400">{partner.partner_email}</p>
+
+        <div className="flex flex-col justify-center items-center mt-4">
+          <Button
+            isCustom
+            customClass="bg-green-500 mb-3 text-white hover:bg-green-300 focus:ring-green-200"
+            onClick={() =>
+              acceptHandler(partner.partner_id, partner.partner_email)
+            }
+          >
+            Accept
+          </Button>
+          <Button
+            isCustom
+            customClass="bg-red-500 text-white hover:bg-red-300 focus:ring-red-200"
+            onClick={() =>
+              rejectHandler(partner.partner_id, partner.partner_email)
+            }
+          >
+            Reject
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 }

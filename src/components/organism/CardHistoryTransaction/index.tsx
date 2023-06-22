@@ -2,12 +2,26 @@ import Image from "next/image";
 import React from "react";
 import Detail from "./Detail";
 import Button from "@/components/atoms/Button";
+import clsx from "clsx";
 
-export default function CardHistoryTransaction() {
+type CardHistoryTransactionProps = {
+  data: any;
+};
+
+export default function CardHistoryTransaction({
+  data,
+}: CardHistoryTransactionProps) {
+  const statusClass = clsx(
+    "text-white px-4 py-2 rounded-full text-sm max-w-fit",
+    data.order_status === "1" && "bg-gray-500",
+    data.order_status === "2" && "bg-green-500"
+  );
   return (
     <div className="flex items-center justify-center gap-4 w-full md:w-3/4 lg:w-2/4 border border-font-primary-300 p-4 rounded-lg flex-col md:flex-row">
       <Image
-        src={`https://source.unsplash.com/random/?female`}
+        src={`https://source.unsplash.com/random/?${
+          data.gender === "f" ? "female" : "male"
+        }`}
         width={100}
         height={100}
         alt="partner-img"
@@ -21,13 +35,18 @@ export default function CardHistoryTransaction() {
           className="flex flex-col gap-2 w-full justify-center items-center md:justify-start md:items-start"
           style={{ flex: "1 0 70%" }}
         >
-          <p className="text-heading text-xl font-medium">Katarina</p>
-          <p className="text-white px-4 py-2 rounded-full text-sm max-w-fit bg-green-500">
-            Success
+          <p className="text-heading text-xl font-medium">
+            {data.partner_name}
           </p>
-          <p className="text-font-primary-500">Kondangan</p>
-          <p className="text-font-primary-400">20 Februari 2023</p>
-          <p className="text-font-primary-500">06.00 - 09.00</p>
+          <p className={statusClass}>
+            {(data.order_status === "1" && "Ended") ||
+              (data.order_status === "2" && "On Going")}
+          </p>
+          <p className="text-font-primary-500">{data.category}</p>
+          <p className="text-font-primary-400">{data.booking_date}</p>
+          <p className="text-font-primary-500">
+            {data.start} - {data.end}
+          </p>
           <div className="flex gap-1 items-center">
             <Image
               src="/images/icon-star.svg"
@@ -35,10 +54,10 @@ export default function CardHistoryTransaction() {
               height={20}
               alt="star"
             />
-            <p className="text-heading">4.9</p>
+            <p className="text-heading"></p>
           </div>
         </div>
-        <Button href="/transaction/detail/1212" className="">
+        <Button href={`/transaction/detail/${data.order_id}`} className="">
           Details
         </Button>
       </div>

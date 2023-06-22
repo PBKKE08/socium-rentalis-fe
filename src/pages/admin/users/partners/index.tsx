@@ -8,34 +8,41 @@ import Button from "@/components/atoms/Button";
 
 const usersData: PartnerCard[] = [
   {
+
+    id: 1,
+    nama: "John Doe",
+    gender: "m",
+  },
+  {
+
     id: 2,
-    name: "Andrea",
-    gender: "female",
+    nama: "Andrea",
+    gender: "f",
     isPartner: "pending",
-    price: 100000,
-    category: "wedding",
+    harga: 100000,
+    kategori: "wedding",
     rating: 4.5,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
   },
   {
     id: 3,
-    name: "Lamena",
-    gender: "female",
+    nama: "Lamena",
+    gender: "f",
     isPartner: "accepted",
-    price: 100000,
-    category: "wedding",
+    harga: 100000,
+    kategori: "wedding",
     rating: 4.5,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
   },
   {
     id: 4,
-    name: "Melati",
-    gender: "female",
+    nama: "Melati",
+    gender: "f",
     isPartner: "rejected",
-    price: 100000,
-    category: "wedding",
+    harga: 100000,
+    kategori: "wedding",
     rating: 4.5,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",

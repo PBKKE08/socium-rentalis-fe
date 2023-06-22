@@ -4,9 +4,14 @@ type PaymentItemProps = {
   _id: string;
   name: string;
   onChange?: () => void;
-};
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
-export default function PaymentItem({ _id, onChange, name }: PaymentItemProps) {
+export default function PaymentItem({
+  _id,
+  onChange,
+  name,
+  ...props
+}: PaymentItemProps) {
   return (
     <label className="" htmlFor={_id} onChange={onChange}>
       <input
@@ -14,7 +19,7 @@ export default function PaymentItem({ _id, onChange, name }: PaymentItemProps) {
         type="radio"
         id={_id}
         name="paymentMethod"
-        value={_id}
+        {...props}
       />
       <div className="booking-payment-card relative">
         <Image

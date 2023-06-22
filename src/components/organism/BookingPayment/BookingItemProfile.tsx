@@ -1,13 +1,25 @@
 import Image from "next/image";
 import { NumericFormat } from "react-number-format";
 import BookingItemDetail from "./BookingItemDetail";
+import { getDurationInHours } from "@/lib/validation";
+import { useEffect, useState } from "react";
 
-export default function BookingItemProfile() {
+type BookingItemProfileProps = {
+  partner: any;
+  bookingData: any;
+};
+
+export default function BookingItemProfile({
+  partner,
+  bookingData,
+}: BookingItemProfileProps) {
   return (
     <>
       <div className="flex flex-col md:flex-row items-center justify-center gap-4 w-full mb-10">
         <Image
-          src={`https://source.unsplash.com/random/?male`}
+          src={`https://source.unsplash.com/random/?${
+            partner.gender === "f" ? "female" : "male"
+          }`}
           width={500}
           height={500}
           alt="partner-img"
@@ -19,7 +31,7 @@ export default function BookingItemProfile() {
         <div className="flex flex-col gap-1 w-full">
           <p className="text-heading text-lg font-semibold">
             <NumericFormat
-              value={1000000}
+              value={partner.price}
               displayType="text"
               prefix="IDR "
               suffix="/jam"
@@ -27,8 +39,12 @@ export default function BookingItemProfile() {
               thousandSeparator="."
             />
           </p>
-          <p className="text-lg text-font-primary-500 font-medium">Name</p>
-          <p className="text-font-primary-400">Male - Cars</p>
+          <p className="text-lg text-font-primary-500 font-medium">
+            {partner.name}
+          </p>
+          <p className="text-font-primary-400">
+            {partner.gender === "f" ? "Female" : "Male"} - {partner.category}
+          </p>
           <div className="flex gap-1 items-center">
             <Image
               src="/images/icon-star.svg"
@@ -36,16 +52,18 @@ export default function BookingItemProfile() {
               height={20}
               alt="star"
             />
-            <p className="text-heading">{5}</p>
+            <p className="text-heading">{partner.rating}</p>
           </div>
         </div>
       </div>
       <div className="flex flex-col gap-3 w-full mb-10">
-        <BookingItemDetail title="Kategori Booking" value="Kondangan" />
-        <BookingItemDetail title="Tanggal Booking" value="17 Januari 2024" />
-        <BookingItemDetail title="Jam Mulai" value="06:00 AM" />
-        <BookingItemDetail title="Jam Selesai" value="17:00 PM" />
-        <BookingItemDetail title="Durasi" value="11 Jam" />
+        <BookingItemDetail title="Kategori Booking" value={partner.category} />
+        <BookingItemDetail
+          title="Tanggal Booking"
+          value={bookingData.bookingDate}
+        />
+        <BookingItemDetail title="Jam Mulai" value={bookingData.bookingStart} />
+        <BookingItemDetail title="Jam Selesai" value={bookingData.bookingEnd} />
       </div>
     </>
   );
