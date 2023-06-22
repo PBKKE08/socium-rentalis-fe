@@ -50,3 +50,14 @@ export async function getAllTransactionAdmin() {
 
   return transaction;
 }
+
+export async function accTransaction(data: any) {
+  const transaction = await callAPI({
+    url: `${URL}/admin/terima_pembayaran`,
+    method: "POST",
+    data,
+    // tokenAdmin: true,
+  });
+
+  return transaction;
+}
