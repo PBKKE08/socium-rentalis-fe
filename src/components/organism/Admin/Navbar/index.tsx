@@ -50,7 +50,7 @@ export default function AdminNavbar({ name }: AdminNavbarProps) {
         <NavLink
           name="Transactions"
           isActive={name === "transactions" && true}
-          href="/admin/transactions"
+          href="/admin/transactions/history"
         />
         <li>
           <Button>Logout</Button>

@@ -66,7 +66,10 @@ export default function UsersCard({ partner }: UsersCardProps) {
             {partner.nama}
           </p>
           <p className="text-font-primary-400">
-            {partner.gender} - {partner.kategori}
+
+            {partner.gender}
+            {/* - {partner.category} */}
+
           </p>
           <div className="flex gap-1 items-center">
             <Image

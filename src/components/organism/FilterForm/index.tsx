@@ -65,6 +65,7 @@ export default function FilterForm({ className, setQuery }: FilterFormProps) {
           <option value="f">Female</option>
         </Select>
 
+
         {categories && (
           <Select
             value={categoryFilter}
@@ -79,16 +80,17 @@ export default function FilterForm({ className, setQuery }: FilterFormProps) {
           </Select>
         )}
 
+
         <Button type="submit" isPrimary>
           Apply Filters
         </Button>
       </form>
       <p className="text-heading mt-8">
-        Show search by {areaFilter !== "all" ? `area: ${areaFilter}, ` : ""}{" "}
-        {genderFilter !== "all"
-          ? `gender: ${genderFilter === "f" ? "female, " : "male, "} `
-          : ""}{" "}
-        {categoryFilter !== "all" ? `category: ${categoryFilter}` : ""}
+
+        Show search by {inputValue ? `name: ${inputValue}` + "," : ""}{" "}
+        {selectGender !== "all" ? `gender: ${selectGender}` : ""}{" "}
+        {/* {selectCategory !== "all" ? `category: ${selectCategory}` : ""} */}
+
       </p>
     </div>
   );

@@ -39,7 +39,9 @@ export default function PartnerCard({ partner }: PartnerCardProps) {
           {partner.nama}
         </p>
         <p className="text-font-primary-400">
+
           {partner.gender === "m" ? "male" : "female"} - {partner.kategori}
+
         </p>
         <div className="flex gap-1 items-center">
           <Image
