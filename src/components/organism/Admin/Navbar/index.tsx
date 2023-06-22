@@ -48,6 +48,11 @@ export default function AdminNavbar({ name }: AdminNavbarProps) {
           href="/admin/users"
         />
         <NavLink
+          name="Categories"
+          isActive={name === "categories" && true}
+          href="/admin/categories"
+        />
+        <NavLink
           name="Transactions"
           isActive={name === "transactions" && true}
           href="/admin/transactions"

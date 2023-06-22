@@ -7,18 +7,22 @@ const DashboardData = [
   {
     title: "Users",
     number: 305,
+    href: "/admin/users"
   },
   {
     title: "Partners",
     number: 150,
+    href: "/admin/users/partners"
   },
   {
     title: "Categories",
     number: 50,
+    href: "/admin/categories"
   },
   {
     title: "Transactions",
     number: 50,
+    href: "/admin/transactions"
   },
 ];
 
@@ -38,9 +42,11 @@ export default function AdminDashboard() {
           <div className="flex flex-wrap justify-center items-center gap-4">
             {DashboardData.map((data) => (
               <DashboardCard
+                href={data.href}
                 title={data.title}
                 number={data.number}
                 key={data.title}
+                text={data.title}
               />
             ))}
           </div>
