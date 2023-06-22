@@ -60,7 +60,7 @@ export async function getServerSideProps({ req }: { req: any }) {
     };
 
   const result: any = await getTransaction(
-    serverToken ? serverToken : payloadPartner
+    serverToken ? serverToken! : payloadPartner!
   );
 
   if (result.error) console.log(result.message);
