@@ -12,16 +12,24 @@ type PartnerCard = {
   city?: string;
 };
 
-<<<<<<< Updated upstream
 type QueryFilter = {
   area?: string;
   gender?: string;
   category?: string;
 };
 
-=======
->>>>>>> Stashed changes
+
+type ccResponse = {
+  categories: CategoryCard[];
+  cities: CityCard[];
+}
+
 type CategoryCard = {
   id: number;
-  nama: string;
+  name: string;
+}
+
+type CityCard = {
+  id: number;
+  name: string;
 }

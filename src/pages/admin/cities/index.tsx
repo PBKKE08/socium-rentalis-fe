@@ -44,7 +44,7 @@ const mockData : ccResponse = {
   ],
 }
 
-export default function AdminCategories() {
+export default function AdminCities() {
   const [CCData, setCCData] = useState<any>([]); // [1
   
   const getAllData = useCallback(async () => {

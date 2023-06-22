@@ -15,11 +15,10 @@ export default function CategoryCard({ category }: CategoryCardProps) {
         <div className="flex flex-col gap-1 w-full">
           <p
             className={`
-          text-white px-4 py-2 rounded-full text-sm max-w-fit 
+          text-black px-4 py-2 rounded-full text-sm max-w-fit 
           `}
           >
-            TEST
-            {category.nama}
+            {category.name}
           </p>
           </div>
     </Link>
