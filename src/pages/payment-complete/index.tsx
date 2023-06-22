@@ -1,7 +1,10 @@
 import Button from "@/components/atoms/Button";
 import Footer from "@/components/organism/Footer";
 import Navbar from "@/components/organism/Navbar";
-import { getTokenFromCookiesAndDecodeForServer } from "@/services/token";
+import {
+  getTokenFromCookiesAndDecodeForServer,
+  getTokenPartnerFromCookiesServer,
+} from "@/services/token";
 import Head from "next/head";
 
 export default function PaymentComplete() {
@@ -296,10 +299,11 @@ export default function PaymentComplete() {
 }
 
 export async function getServerSideProps({ req }: { req: any }) {
-  const { token } = req.cookies;
+  const { token, tokenPartner } = req.cookies;
   const payload = getTokenFromCookiesAndDecodeForServer(token);
+  const payloadPartner = getTokenPartnerFromCookiesServer(tokenPartner);
 
-  if (!token || !payload) {
+  if ((!token || !payload) && (!tokenPartner || !payloadPartner)) {
     return {
       redirect: {
         destination: "/login",

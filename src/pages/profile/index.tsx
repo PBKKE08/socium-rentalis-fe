@@ -1,6 +1,7 @@
 import Footer from "@/components/organism/Footer";
 import Navbar from "@/components/organism/Navbar";
 import ProfileItem from "@/components/organism/ProfileItem";
+import { getTokenPartnerFromCookiesServer } from "@/services/token";
 import { getTokenFromCookiesAndDecodeForServer } from "@/services/token";
 import Head from "next/head";
 
@@ -28,10 +29,11 @@ export default function Profile() {
 }
 
 export async function getServerSideProps({ req }: { req: any }) {
-  const { token } = req.cookies;
+  const { token, tokenPartner } = req.cookies;
   const payload = getTokenFromCookiesAndDecodeForServer(token);
+  const payloadPartner = getTokenPartnerFromCookiesServer(tokenPartner);
 
-  if (!token || !payload) {
+  if ((!token || !payload) && (!tokenPartner || !payloadPartner)) {
     return {
       redirect: {
         destination: "/login",

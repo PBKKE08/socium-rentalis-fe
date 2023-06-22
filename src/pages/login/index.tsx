@@ -36,7 +36,7 @@ export default function Login() {
       // console.log(result);
       return alert("Login failed");
     } else {
-      // console.log(result.data.token);
+      console.log(result.data.token);
       saveTokenToCookies(result.data.token);
       router.push("/");
     }

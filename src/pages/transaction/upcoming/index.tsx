@@ -4,6 +4,8 @@ import Upcoming from "@/components/organism/Transaction/Upcoming";
 import {
   getTokenFromCookiesAndDecodeForServer,
   getTokenFromCookiesServer,
+  getTokenPartnerFromCookiesAndDecodeForServer,
+  getTokenPartnerFromCookiesServer,
 } from "@/services/token";
 import { getTransaction } from "@/services/users";
 import { useState } from "react";
@@ -15,7 +17,7 @@ export default function TransactionUpcoming({
   transactions,
 }: TransactionUpcomingProps) {
   const [data, setData] = useState(
-    transactions.filter((item: any) => item.order_status === "3")
+    transactions?.filter((item: any) => item.order_status === "3")
   );
   return (
     <MainLayoutTransaction>
@@ -29,10 +31,11 @@ export default function TransactionUpcoming({
 }
 
 export async function getServerSideProps({ req }: { req: any }) {
-  const { token } = req.cookies;
+  const { token, tokenPartner } = req.cookies;
   const payload = getTokenFromCookiesAndDecodeForServer(token);
+  const payloadPartner = getTokenPartnerFromCookiesServer(tokenPartner);
   const serverToken = getTokenFromCookiesServer(token);
-  if (!token || !payload || !serverToken) {
+  if ((!token || !payload) && (!tokenPartner || !payloadPartner)) {
     return {
       redirect: {
         destination: "/login",
@@ -40,8 +43,17 @@ export async function getServerSideProps({ req }: { req: any }) {
       },
     };
   }
+  if (!serverToken && !payloadPartner)
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
 
-  const result: any = await getTransaction(serverToken);
+  const result: any = await getTransaction(
+    serverToken ? serverToken : payloadPartner
+  );
 
   if (result.error) console.log(result.message);
   else

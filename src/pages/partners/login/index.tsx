@@ -3,6 +3,7 @@ import Input from "@/components/atoms/Input";
 import LogoIcon from "@/components/atoms/LogoIcon";
 import { validateEmail, validatePassword } from "@/lib/validation";
 import { postLogin } from "@/services/auth";
+import { partnerLogin } from "@/services/partners";
 import { saveTokenPartnerToCookies } from "@/services/token";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -30,7 +31,7 @@ export default function Login() {
 
     // console.log({ data });
 
-    const result: any = await postLogin(data);
+    const result: any = await partnerLogin(data);
 
     if (result.error) {
       // console.log(result);
@@ -38,7 +39,7 @@ export default function Login() {
     } else {
       console.log(result.data.token);
       saveTokenPartnerToCookies(result.data.token);
-      // router.push("/");
+      router.push("/");
     }
   };
   return (

@@ -8,7 +8,7 @@ export default function Upcoming({ className, histories }: UpcomingProps) {
   return (
     <div className={className}>
       <div className="flex flex-col justify-center items-center gap-8">
-        {histories.length > 0 ? (
+        {histories?.length > 0 ? (
           histories.map((item: any) => (
             <CardUpcomingTransaction key={item.order_id} data={item} />
           ))

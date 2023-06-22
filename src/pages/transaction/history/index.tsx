@@ -4,6 +4,7 @@ import TabTransaction from "@/components/organism/Transaction/TabTransaction";
 import {
   getTokenFromCookiesAndDecodeForServer,
   getTokenFromCookiesServer,
+  getTokenPartnerFromCookiesServer,
 } from "@/services/token";
 import { getTransaction } from "@/services/users";
 import { useEffect, useState } from "react";
@@ -16,7 +17,7 @@ export default function TransactionHistory({
   transactions,
 }: TransactionHistoryProps) {
   const [data, setData] = useState(
-    transactions.filter(
+    transactions?.filter(
       (item: any) => item.order_status === "1" || item.order_status === "2"
     )
   );
@@ -36,10 +37,12 @@ export default function TransactionHistory({
 }
 
 export async function getServerSideProps({ req }: { req: any }) {
-  const { token } = req.cookies;
+  const { token, tokenPartner } = req.cookies;
   const payload = getTokenFromCookiesAndDecodeForServer(token);
+  const payloadPartner = getTokenPartnerFromCookiesServer(tokenPartner);
   const serverToken = getTokenFromCookiesServer(token);
-  if (!token || !payload || !serverToken) {
+
+  if ((!token || !payload) && (!tokenPartner || !payloadPartner)) {
     return {
       redirect: {
         destination: "/login",
@@ -48,7 +51,17 @@ export async function getServerSideProps({ req }: { req: any }) {
     };
   }
 
-  const result: any = await getTransaction(serverToken);
+  if (!serverToken && !payloadPartner)
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+
+  const result: any = await getTransaction(
+    serverToken ? serverToken : payloadPartner
+  );
 
   if (result.error) console.log(result.message);
   else

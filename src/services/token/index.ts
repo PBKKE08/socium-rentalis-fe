@@ -45,12 +45,12 @@ export function getTokenFromCookiesAndDecodeForServer(tokenFromServer: string) {
 export function saveTokenAdminToCookies(token: string) {
   const tokenBase64 = btoa(token);
   // set token to cookie in 1 hour
-  Cookies.set("token-admin", tokenBase64, {
+  Cookies.set("tokenAdmin", tokenBase64, {
     expires: 24 * 3,
   });
 }
 export function getTokenAdminFromCookies() {
-  const tokenBase64: string | undefined = Cookies.get("token-admin");
+  const tokenBase64: string | undefined = Cookies.get("tokenAdmin");
   if (!tokenBase64) return undefined;
   const token = atob(tokenBase64);
   // console.log(token);
@@ -65,19 +65,19 @@ export function getDataTokenAdmin() {
 }
 
 export function removeTokenAdminFromCookies() {
-  Cookies.remove("token-admin"); // remove token from cookie
+  Cookies.remove("tokenAdmin"); // remove token from cookie
 }
 
 // PARTNER
 export function saveTokenPartnerToCookies(token: string) {
   const tokenBase64 = btoa(token);
   // set token to cookie in 1 hour
-  Cookies.set("token-partner", tokenBase64, {
+  Cookies.set("tokenPartner", tokenBase64, {
     expires: 24 * 3,
   });
 }
 export function getTokenPartnerFromCookies() {
-  const tokenBase64: string | undefined = Cookies.get("token-partner");
+  const tokenBase64: string | undefined = Cookies.get("tokenPartner");
   if (!tokenBase64) return undefined;
   const token = atob(tokenBase64);
   // console.log(token);
@@ -92,7 +92,7 @@ export function getDataPartnerToken() {
 }
 
 export function removeTokenPartnerFromCookies() {
-  Cookies.remove("token-partner"); // remove token from cookie
+  Cookies.remove("tokenPartner"); // remove token from cookie
 }
 
 export function getTokenPartnerFromCookiesServer(tokenFromServer: string) {
