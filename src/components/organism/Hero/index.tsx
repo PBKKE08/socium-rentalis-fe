@@ -7,11 +7,12 @@ type HeroProps = {
 export default function Hero({ className }: HeroProps) {
   return (
     <div className={`${className}`}>
-      <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-7">
+      <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-12">
         <HeroContent />
         <Image
+          className="rounded-md"
           alt="hero-img"
-          src="/images/hero-img.png"
+          src="/images/sc-feature.jpg"
           width={500}
           height={500}
           quality={100}

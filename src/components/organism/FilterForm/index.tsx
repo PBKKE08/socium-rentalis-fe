@@ -1,23 +1,40 @@
 import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
 import Select from "@/components/atoms/Select";
-import { useState } from "react";
+import { getPublicData } from "@/services/users";
+import { useCallback, useEffect, useState } from "react";
 
 type FilterFormProps = {
   className?: string;
+  setQuery: (query: any) => void;
 };
 
-export default function FilterForm({ className }: FilterFormProps) {
-  const [inputValue, setInputValue] = useState("");
-  const [selectGender, setSelectGender] = useState("all");
-  const [selectCategory, setSelectCategory] = useState("all");
+export default function FilterForm({ className, setQuery }: FilterFormProps) {
+  const [categories, setCategories] = useState<any>([]);
+  const [areas, setAreas] = useState<any>([]);
+  const [categoryFilter, setCategoryFilter] = useState<any>("");
+  const [areaFilter, setAreaFilter] = useState<any>("");
+  const [genderFilter, setGenderFilter] = useState<any>("");
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log({ inputValue });
-    console.log({ selectGender });
-    console.log({ selectCategory });
+    setQuery({
+      area: areaFilter,
+      gender: genderFilter,
+      category: categoryFilter,
+    });
   };
+
+  const getDataDropdown = useCallback(async () => {
+    const result: any = await getPublicData(true, true);
+    // console.log(result);
+    setAreas(result.data.cities);
+    setCategories(result.data.categories);
+  }, [getPublicData, areas, categories]);
+
+  useEffect(() => {
+    getDataDropdown();
+  }, [areas, categories]);
 
   return (
     <div className={className}>
@@ -26,40 +43,52 @@ export default function FilterForm({ className }: FilterFormProps) {
         className={`bg-font-primary-50 w-full rounded-xl flex justify-center items-center gap-4 px-4 py-2 flex-wrap lg:flex-nowrap`}
         onSubmit={submitHandler}
       >
-        <Input
-          id="search"
-          placeholder="Search Partner by Name"
-          type="text"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
-
+        {areas && (
+          <Select
+            value={areaFilter}
+            onChange={(e) => setAreaFilter(e.target.value)}
+          >
+            <option value="all">Select Area</option>
+            {areas.map((area: any) => (
+              <option key={area.id} value={area.name}>
+                {area.name}
+              </option>
+            ))}
+          </Select>
+        )}
         <Select
-          value={selectGender}
-          onChange={(e) => setSelectGender(e.target.value)}
+          value={genderFilter}
+          onChange={(e) => setGenderFilter(e.target.value)}
         >
           <option value="all">Select Gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
+          <option value="m">Male</option>
+          <option value="f">Female</option>
         </Select>
 
-        <Select
-          value={selectCategory}
-          onChange={(e) => setSelectCategory(e.target.value)}
-        >
-          <option value="all">Select Category</option>
-          <option value="cars">Cars</option>
-          <option value="bike">Bike</option>
-        </Select>
+        {categories && (
+          <Select
+            value={categoryFilter}
+            onChange={(e) => setCategoryFilter(e.target.value)}
+          >
+            <option value="all">Select Category</option>
+            {categories.map((category: any) => (
+              <option key={category.id} value={category.name}>
+                {category.name}
+              </option>
+            ))}
+          </Select>
+        )}
 
         <Button type="submit" isPrimary>
           Apply Filters
         </Button>
       </form>
       <p className="text-heading mt-8">
-        Show search by {inputValue ? `name: ${inputValue}` : ""}{" "}
-        {selectGender !== "all" ? `gender: ${selectGender}` : ""}{" "}
-        {selectCategory !== "all" ? `category: ${selectCategory}` : ""}
+        Show search by {areaFilter !== "all" ? `area: ${areaFilter}, ` : ""}{" "}
+        {genderFilter !== "all"
+          ? `gender: ${genderFilter === "f" ? "female, " : "male, "} `
+          : ""}{" "}
+        {categoryFilter !== "all" ? `category: ${categoryFilter}` : ""}
       </p>
     </div>
   );

@@ -1,9 +1,46 @@
 import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
 import LogoIcon from "@/components/atoms/LogoIcon";
+import { validateEmail, validatePassword } from "@/lib/validation";
+import { postLogin } from "@/services/auth";
+import { saveTokenToCookies } from "@/services/token";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // console.log({ email, password });
+
+    if (email === "" || password === "")
+      return alert("Please fill all the fields");
+    if (!validateEmail(email) || !validatePassword(password))
+      return alert("Login failed");
+
+    const data = {
+      email,
+      password,
+    };
+
+    // console.log({ data });
+
+    const result: any = await postLogin(data);
+
+    if (result.error) {
+      // console.log(result);
+      return alert("Login failed");
+    } else {
+      console.log(result.data.token);
+      saveTokenToCookies(result.data.token);
+      router.push("/");
+    }
+  };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-8 py-16">
       <Link href="/">
@@ -15,7 +52,7 @@ export default function Login() {
         Login before you place an order partner.
       </p>
 
-      <form className="w-full md:w-96 mt-8">
+      <form className="w-full md:w-96 mt-8" onSubmit={handleSubmit}>
         <div className="mb-6">
           <Input
             id="emailOrUsername"
@@ -24,6 +61,8 @@ export default function Login() {
             labelName="Email or Username"
             placeholder="Enter your email or username"
             required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="mb-8">
@@ -34,12 +73,17 @@ export default function Login() {
             labelName="Password"
             placeholder="Enter your password"
             required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <Button isPrimary type="submit" className="mb-3">
           Login
         </Button>
-        <Button href="/register">Register</Button>
+        <Button href="/register" className="mb-3">
+          Register
+        </Button>
+        <Button href="/partners/login">Login Partners</Button>
       </form>
     </div>
   );

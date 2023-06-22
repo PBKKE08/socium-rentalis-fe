@@ -1,12 +1,14 @@
 type CategoryCardProps = {
   title: string;
-  number: number;
+  star: string;
+  desc: string;
 };
-export default function CategoryCard({ title, number }: CategoryCardProps) {
+export default function CategoryCard({ title, desc, star }: CategoryCardProps) {
   return (
-    <div className="flex flex-col w-fill bg-white px-4 py-8 w-60 rounded-xl">
+    <div className="flex flex-col bg-white px-4 py-8 w-90 rounded-xl">
       <p className="text-heading text-xl font-semibold">{title}</p>
-      <p className="text-font-primary-400">{number} Partners</p>
+      <p className="text-heading text-xl font-semibold">{star}</p>
+      <p className="text-font-primary-400">{desc}</p>
     </div>
   );
 }
