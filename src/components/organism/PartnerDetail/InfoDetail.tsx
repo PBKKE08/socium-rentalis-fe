@@ -24,7 +24,7 @@ export default function InfoDetail({ partner }: InfoDetailProps) {
           value={partner.price}
           displayType="text"
           prefix="IDR "
-          suffix=".000/jam"
+          suffix="/jam"
           decimalSeparator=","
           thousandSeparator="."
         />

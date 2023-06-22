@@ -23,11 +23,11 @@ export default function Navbar({ name, isPartner }: NavbarProps) {
   const router = useRouter();
   useEffect(() => {
     setIsNavOpen(false);
-    const data = getDataToken();
-    const dataPartner = getDataPartnerToken();
-    console.log({ data });
-    console.log({ dataPartner });
-    if (!data || !dataPartner) setIsLogin(false);
+    const data: any = getDataToken();
+    const dataPartner: any = getDataPartnerToken();
+    // console.log({ data });
+    // console.log({ dataPartner });
+    if (!data && !dataPartner) setIsLogin(false);
     else if (dataPartner) {
       setUser(dataPartner);
       setIsLogin(true);

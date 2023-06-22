@@ -7,7 +7,10 @@ import BookingItemNominal from "@/components/organism/BookingPayment/BookingItem
 import DetailProfile from "@/components/organism/Transaction/Detail/DetailProfile";
 import MainLayoutTransaction from "@/components/organism/Transaction/MainLayoutTransaction";
 import { getDurationInHours } from "@/lib/validation";
-import { getTokenFromCookiesAndDecodeForServer } from "@/services/token";
+import {
+  getTokenFromCookiesAndDecodeForServer,
+  getTokenPartnerFromCookiesServer,
+} from "@/services/token";
 import { getTransactionById, postReview } from "@/services/users";
 import { useRouter } from "next/router";
 import { useState, useEffect, useCallback } from "react";
@@ -144,10 +147,11 @@ export default function DetailTransaction() {
 }
 
 export async function getServerSideProps({ req }: { req: any }) {
-  const { token } = req.cookies;
+  const { token, tokenPartner } = req.cookies;
   const payload = getTokenFromCookiesAndDecodeForServer(token);
+  const payloadPartner = getTokenPartnerFromCookiesServer(tokenPartner);
 
-  if (!token || !payload) {
+  if ((!token || !payload) && (!tokenPartner || !payloadPartner)) {
     return {
       redirect: {
         destination: "/login",

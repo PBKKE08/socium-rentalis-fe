@@ -27,6 +27,15 @@ export default function BookingForm({ className }: BookingFormProps) {
     // console.log({ bookingNote });
     // console.log({ paymentMethod });
 
+    if (
+      !bookingDate ||
+      !bookingStart ||
+      !bookingEnd ||
+      !bookingNote ||
+      !paymentMethod
+    )
+      return alert("Please fill all fields");
+
     const bookingData = {
       bookingDate,
       bookingStart,
@@ -53,6 +62,7 @@ export default function BookingForm({ className }: BookingFormProps) {
               isLabel
               labelName="Booking Day"
               onChange={(e) => setBookingDate(e.target.value)}
+              required
             />
           </div>
           <div className="w-full">
@@ -62,6 +72,7 @@ export default function BookingForm({ className }: BookingFormProps) {
               isLabel
               labelName="Time Start"
               onChange={(e) => setBookingStart(e.target.value)}
+              required
             />
           </div>
           <div className="w-full">
@@ -71,6 +82,7 @@ export default function BookingForm({ className }: BookingFormProps) {
               isLabel
               labelName="Time End"
               onChange={(e) => setBookingEnd(e.target.value)}
+              required
             />
           </div>
         </div>
