@@ -26,14 +26,18 @@ export default function AdminUsers() {
       </Head>
       <main>
         <AdminNavbar name="users" />
-        <div className="container mx-auto px-6 py-8">
+        {/* <div className="container mx-auto px-6 py-8">
           <UsersTab name="users" />
-        </div>
+        </div> */}
         <div className="container mx-auto px-6 py-8">
           <div className="flex flex-wrap gap-8 items-center justify-center">
-            {usersData?.map((user: any) => (
-              <UsersCard partner={user} key={user.partner_id} />
-            ))}
+            {usersData ? (
+              usersData?.map((user: any) => (
+                <UsersCard partner={user} key={user.partner_id} />
+              ))
+            ) : (
+              <p className="text-center">No data</p>
+            )}
           </div>
         </div>
         <div className="bg-primary-400 mt-10">
