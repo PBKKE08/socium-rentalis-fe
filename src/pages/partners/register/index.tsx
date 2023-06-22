@@ -37,12 +37,12 @@ export default function PartnerRegister() {
     setCategories(result.data.categories);
     setCity(result.data.cities[0].id);
     setCategory(result.data.categories[0].id);
-  }, [getPublicData, cities, categories]);
+  }, [getPublicData]);
 
   useEffect(() => {
     removeTokenFromCookies();
     getDataDropdown();
-  }, [cities, categories]);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

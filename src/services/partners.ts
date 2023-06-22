@@ -21,3 +21,12 @@ export async function partnerSignUp(data: any) {
     data,
   });
 }
+
+export async function partnerLogin(data: any) {
+  const url = `${URL}/auth/login_partner`;
+  return callAPI({
+    url,
+    method: "POST",
+    data,
+  });
+}

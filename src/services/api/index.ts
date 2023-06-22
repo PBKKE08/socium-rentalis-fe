@@ -21,21 +21,21 @@ export default async function callAPI({
     let headers = {};
     if (serverToken) {
       headers = {
-        "ngrok-skip-browser-warning": "69420",
+        // "ngrok-skip-browser-warning": "69420",
         Authorization: `Bearer ${serverToken}`,
       };
     } else if (token) {
       const JWTToken = getTokenFromCookies();
       if (!JWTToken) throw new Error("Token not found");
       headers = {
-        "ngrok-skip-browser-warning": "69420",
+        // "ngrok-skip-browser-warning": "69420",
         Authorization: `Bearer ${JWTToken}`,
       };
     } else if (tokenAdmin) {
       const JWTToken = getTokenAdminFromCookies();
       if (!JWTToken) throw new Error("Token not found");
       headers = {
-        "ngrok-skip-browser-warning": "69420",
+        // "ngrok-skip-browser-warning": "69420",
         Authorization: `Bearer ${JWTToken}`,
       };
     } else headers = { "ngrok-skip-browser-warning": "69420" };

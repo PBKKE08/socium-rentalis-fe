@@ -10,3 +10,23 @@ export async function getPartnerList() {
 
   return partners;
 }
+
+export async function accPartner(id: string, email: string) {
+  const partners = await callAPI({
+    url: `${URL}/admin/terima?id=${id}&email=${email}`,
+    method: "PATCH",
+    // tokenAdmin: true,
+  });
+
+  return partners;
+}
+
+export async function rejectPartner(id: string, email: string) {
+  const partners = await callAPI({
+    url: `${URL}/admin/tolak?id=${id}&email=${email}`,
+    method: "PATCH",
+    // tokenAdmin: true,
+  });
+
+  return partners;
+}

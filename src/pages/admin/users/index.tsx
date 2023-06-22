@@ -2,50 +2,20 @@ import AdminNavbar from "@/components/organism/Admin/Navbar";
 import UsersCard from "@/components/organism/Admin/UsersCard";
 import UsersTab from "@/components/organism/Admin/UsersTab";
 import Footer from "@/components/organism/Footer";
+import { getPartnerList } from "@/services/admin";
 import Head from "next/head";
-
-const usersData: PartnerCard[] = [
-  {
-    id: 1,
-    nama: "John Doe",
-    gender: "m",
-  },
-  {
-    id: 2,
-    nama: "Andrea",
-    gender: "f",
-    isPartner: "pending",
-    harga: 100000,
-    kategori: "wedding",
-    rating: 4.5,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-  },
-  {
-    id: 3,
-    nama: "Lamena",
-    gender: "f",
-    isPartner: "accepted",
-    harga: 100000,
-    kategori: "wedding",
-    rating: 4.5,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-  },
-  {
-    id: 4,
-    nama: "Melati",
-    gender: "f",
-    isPartner: "rejected",
-    harga: 100000,
-    kategori: "wedding",
-    rating: 4.5,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-  },
-];
+import { useCallback, useEffect, useState } from "react";
 
 export default function AdminUsers() {
+  const [usersData, setUsersData] = useState<any>([]); // [1
+  const getAllData = useCallback(async () => {
+    const result = await getPartnerList();
+    setUsersData(result.data);
+    console.log(result.data);
+  }, [getPartnerList, usersData]);
+  useEffect(() => {
+    getAllData();
+  }, []);
   return (
     <>
       <Head>
@@ -60,9 +30,9 @@ export default function AdminUsers() {
           <UsersTab name="users" />
         </div>
         <div className="container mx-auto px-6 py-8">
-          <div className="flex flex-wrap gap-4 items-start justify-start">
-            {usersData.map((user) => (
-              <UsersCard partner={user} />
+          <div className="flex flex-wrap gap-8 items-center justify-center">
+            {usersData?.map((user: any) => (
+              <UsersCard partner={user} key={user.partner_id} />
             ))}
           </div>
         </div>

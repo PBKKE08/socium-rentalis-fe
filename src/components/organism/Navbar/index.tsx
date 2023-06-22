@@ -25,6 +25,8 @@ export default function Navbar({ name, isPartner }: NavbarProps) {
     setIsNavOpen(false);
     const data = getDataToken();
     const dataPartner = getDataPartnerToken();
+    console.log({ data });
+    console.log({ dataPartner });
     if (!data || !dataPartner) setIsLogin(false);
     else if (dataPartner) {
       setUser(dataPartner);
